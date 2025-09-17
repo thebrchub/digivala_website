@@ -1,768 +1,462 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Digivala - Digital Solutions That Slap Different 🚀</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="stylesheet" href="assets/css/style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Digivala - Digital Solutions That Slap Different 🚀</title>
+  <meta name="description" content="Transform your brand with cutting-edge digital solutions. We craft websites, campaigns, and experiences that make your audience stop scrolling and start engaging.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div class="bg-animation"></div>
+  <div class="bg-animation"></div>
+
+ <style>
+    /* Page fade-in */
+    body { opacity: 0; transition: opacity 0.5s ease; }
+    body.loaded { opacity: 1; }
+
+    /* Fade-in elements */
+    .fade-in { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease, transform 0.6s ease; }
+    .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+    /* Header base */
+    #header {
+      
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        padding: 1rem 0;
+        background: rgba(10, 10, 10, 0.8);
+        backdrop-filter: var(--blur);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        z-index: 9999; /* very high to be above everything */
+        transition: all 0.3s ease;
+        pointer-events: auto; /* ensure clicks pass through */
+
+    }
     
+    #header.visible { opacity: 1; }
+    #header.scrolled { 
+      /* background: rgba(10, 10, 10, 0.8);
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1); */
+    backdrop-filter: var(--blur);
+    }
+  </style>
+</head>
+<body>
 
-    <!-- Header -->
-    <header class="header" id="header">
-        <div class="nav-container">
-            <a href="#home" class="logo">
-                <img src="assets/images/logo.svg" alt="Digivala Logo">
-                <span class="logo-text"><strong></strong>Digivala</span>
-            </a>
-            <nav>
-                <ul class="nav-menu">
-                    <li><a href="#home" class="nav-link">Home</a></li>
-                    <li><a href="#services" class="nav-link">Services</a></li>
-                    <li><a href="#about" class="nav-link">About</a></li>
-                    <li><a href="#features" class="nav-link">Features</a></li>
-                    <li><a href="#contact" class="nav-link">Contact</a></li>
-                </ul>
-            </nav>
-            <a href="#contact" class="cta-button">Let's Build</a>
+  <!-- Header placeholder -->
+  <div id="header"></div>
+
+
+  <!-- Hero Section -->
+  <section class="hero" id="home">
+    <div class="hero-container">
+      <div class="hero-content fade-in">
+        <div class="hero-badge">
+          <span>✨</span>
+          <span>Digital Solutions That Hit Different</span>
         </div>
-    </header>
-
-    <!-- Hero Section -->
-    <section class="hero" id="home">
-        <div class="hero-container">
-            <div class="hero-content fade-in">
-                <div class="hero-badge">
-                    <span>✨</span>
-                    <span>Digital Solutions That Hit Different</span>
-                </div>
-                <h1 class="hero-title">
-                    Building Brands That <span class="hero-highlight">Absolutely Slap</span>
-                </h1>
-                <p class="hero-description">
-                    We don't just create websites and campaigns – we craft digital experiences that make your audience stop scrolling and start engaging. From jaw-dropping designs to viral-worthy content, we're the secret sauce your brand needs.
-                </p>
-                <div class="hero-buttons">
-                    <a href="#contact" class="btn-primary">
-                        <span>Let's Collab</span>
-                        <span>→</span>
-                    </a>
-                    <a href="#" class="btn-secondary">
-                        <span>🎥</span>
-                        <span>See Our Work</span>
-                    </a>
-                </div>
-            </div>
-            <div class="hero-visual">
-                <div class="hero-graphic"></div>
-            </div>
+        <h1 class="hero-title">
+          Building Brands That <span class="hero-highlight">Absolutely Slap</span>
+        </h1>
+        <p class="hero-description">
+          We don't just create websites and campaigns – we craft digital experiences that make your audience stop scrolling and start engaging. From jaw-dropping designs to viral-worthy content, we're the secret sauce your brand needs.
+        </p>
+        <div class="hero-buttons">
+          <a href="#contact" class="btn-primary">
+            <span>Let's Collab</span>
+            <span>→</span>
+          </a>
+          <a href="#testimonials" class="btn-secondary">
+            <span>🎥</span>
+            <span>See Our Work</span>
+          </a>
         </div>
-    </section>
-
-    <!-- Services Section -->
-    <section class="services" id="services">
-        <div class="container">
-            <div class="section-header fade-in">
-                <!-- <div class="section-badge">🎯 Our Services</div> -->
-                <h2 class="section-title">Services That Actually Move the Needle</h2>
-            </div>
-            <div class="services-grid">
-                <div class="service-card fade-in">
-                    <div class="service-video">
-                        <video src="assets/videos/1.mp4" autoplay loop muted playsinline></video>
-                    </div>
-                    <h3 class="service-title"> Digital Marketing</h3>
-                    <p class="service-description">Build powerful strategies that blend creativity and data to grow your brand online.</p>
-                </div>
-                <div class="service-card fade-in">
-                    <div class="service-video">
-                        <video src="assets/videos/2.mp4" autoplay loop muted playsinline></video>
-                    </div>
-                    <h3 class="service-title">Social Media Management</h3>
-                    <p class="service-description">We make your socials pop off with content that gets shared, saved, and screenshot.</p>
-                </div>
-                <div class="service-card fade-in">
-                    <div class="service-video">
-                        <video src="assets/videos/3.mp4" autoplay loop muted playsinline></video>
-                    </div>
-                    <h3 class="service-title">META Ads </h3>
-                    <p class="service-description">Get discovered by the right people at the right time with strategies that actually work.</p>
-                </div>
-                <div class="service-card fade-in">
-                    <div class="service-video">
-                        <video src="assets/videos/4.mp4" autoplay loop muted playsinline></video>
-                    </div>
-                    <h3 class="service-title">Google Ads</h3>
-                    <p class="service-description">Capture intent-driven traffic with smart search and display campaigns.</p>
-                </div>
-                <div class="service-card fade-in">
-                    <div class="service-video">
-                        <video src="assets/videos/5.mp4" autoplay loop muted playsinline></video>
-                    </div>
-                    <h3 class="service-title">Web Development</h3>
-                    <p class="service-description">Websites so clean they belong in a museum, yet so functional they convert like crazy.</p>
-                </div>
-                <div class="service-card fade-in">
-                    <div class="service-video">
-                        <video src="assets/videos/6.mp4" autoplay loop muted playsinline></video>
-                    </div>
-                    <h3 class="service-title">Logo Creation</h3>
-                    <p class="service-description">Logos and brands that stick in minds and hearts – the kind people tattoo on themselves.</p>
-                </div>
-                <div class="service-card fade-in">
-                    <div class="service-video">
-                        <video src="assets/videos/7.mp4" autoplay loop muted playsinline></video>
-                    </div>
-                    <h3 class="service-title">Advertising</h3>
-                    <p class="service-description">Connect with creators who actually align with your vibe and values.</p>
-                </div>
-                <div class="service-card fade-in">
-                    <div class="service-video">
-                        <video src="assets/videos/8.mp4" autoplay loop muted playsinline></video>
-                    </div>
-                    <h3 class="service-title">SMS Marketing</h3>
-                    <p class="service-description">Send direct, personal messages that connect instantly with your audience.</p>
-                </div>
-                <div class="service-card fade-in">
-                    <div class="service-video">
-                        <video src="assets/videos/9.mp4" autoplay loop muted playsinline></video>
-                    </div>
-                    <h3 class="service-title">Email Marketing</h3>
-                    <p class="service-description">Deliver personalized campaigns that nurture leads and drive conversions.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-
-    <!-- Add this section before the features section -->
-   <section class="about" id="about">
-        <div class="floating-element elem-1"></div>
-        <div class="floating-element elem-2"></div>
-        
-        <div class="container">
-            <div class="about-content">
-                <!-- <p class="section-subtitle">Who We Are</p> -->
-                <h2 class="about-title">About Digivala</h2>
-                
-                <p class="about-description">
-                    At <strong>Digivala</strong>, we're more than just a digital agency — we're your growth partner.  
-                    In today's fast-paced digital world, brands need more than visibility; they need meaningful connections.  
-                    That's where we come in. Our team brings together strategists, designers, marketers, and developers who share one mission: 
-                    to craft digital experiences that inspire, engage, and drive results.
-                </p>
-                
-                <p class="about-description">
-                    From building a brand's foundation to running high-impact ad campaigns, 
-                    we approach every project with creativity and precision.  
-                    Whether it's launching a website, scaling social media, or executing data-driven marketing, 
-                    we blend <em>innovation, design, and analytics</em> to make sure your brand not only stands out — but stays ahead.
-                </p>
-
-                <!-- <div class="stats-grid">
-                    <div class="stat-item">
-                        <span class="stat-number">150+</span>
-                        <span class="stat-label">Projects Delivered</span>
-                    </div>
-                    <div class="stat-item">
-                        <span class="stat-number">98%</span>
-                        <span class="stat-label">Client Satisfaction</span>
-                    </div>
-                    <div class="stat-item">
-                        <span class="stat-number">5+</span>
-                        <span class="stat-label">Years Experience</span>
-                    </div>
-                    <div class="stat-item">
-                        <span class="stat-number">24/7</span>
-                        <span class="stat-label">Support Available</span>
-                    </div>
-                </div> -->
-                
-                <div class="highlights-container">
-                    <ul class="about-list">
-                        <li>
-                            <!-- <div class="list-icon">🚀</div> -->
-                            <div class="list-text">A multidisciplinary team with proven expertise</div>
-                        </li>
-                        <li>
-                            <!-- <div class="list-icon">📊</div> -->
-                            <div class="list-text">Strategies built on data, not guesswork</div>
-                        </li>
-                        <li>
-                            <!-- <div class="list-icon">🎯</div> -->
-                            <div class="list-text">Transparent process & measurable results</div>
-                        </li>
-                        <li>
-                            <!-- <div class="list-icon">✨</div> -->
-                            <div class="list-text">Creative storytelling that connects with audiences</div>
-                        </li>
-                        <li>
-                            <!-- <div class="list-icon">🤝</div> -->
-                            <div class="list-text">Long-term support to keep your brand thriving</div>
-                        </li>
-                        <li>
-                            <!-- <div class="list-icon">🌟</div> -->
-                            <div class="list-text">Future-ready solutions for tomorrow's challenges</div>
-                        </li>
-                    </ul>
-                </div>
-                
-                <p class="about-description">
-                    We believe every brand has a story worth telling. At Digivala, we make sure that story is heard —  
-                    through powerful campaigns, bold design, and a vision that's always future-ready.
-                </p>
-<!--                 
-                <div class="cta-section">
-                    <a href="#contact" class="cta-button">
-                        Start Your Journey
-                        <span>→</span>
-                    </a>
-                </div> -->
-            </div>
-        </div>
-    </section>
-
-
-
-    <!-- Features Section -->
-    <section class="features" id="features">
-        <div class="container">
-            <div class="features-container">
-                <div class="features-content fade-in">
-                    <!-- <div class="section-badge">⚡ Why Choose Us</div> -->
-                    <h2>We Don't Just Follow Trends – We Set Them</h2>
-                    <ul class="features-list">
-                        <li class="feature-item">
-                            <div class="feature-icon">📈</div>
-                            <div class="feature-text">
-                                <h3>Results That Actually Matter</h3>
-                                <p>No vanity metrics here. We focus on ROI, conversions, and growth that impacts your bottom line.</p>
-                            </div>
-                        </li>
-                        <li class="feature-item">
-                            <div class="feature-icon">🎯</div>
-                            <div class="feature-text">
-                                <h3>Strategies Built for You</h3>
-                                <p>Cookie-cutter solutions are for cookies. We create custom strategies that fit your unique brand DNA.</p>
-                            </div>
-                        </li>
-                        <li class="feature-item">
-                            <div class="feature-icon">⚡</div>
-                            <div class="feature-text">
-                                <h3>Speed That Shocks</h3>
-                                <p>While others are still planning, we're already executing. Fast turnarounds without compromising quality.</p>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-                <div class="features-visual">
-                    <div class="floating-card">
-                        <h4>📊 Analytics Dashboard</h4>
-                        <p>Real-time insights</p>
-                    </div>
-                    <div class="floating-card">
-                        <h4>🎨 Creative Suite</h4>
-                        <p>Unlimited revisions</p>
-                    </div>
-                    <div class="floating-card">
-                        <h4>⚡ Lightning Fast</h4>
-                        <p>24/7 support</p>
-                    </div>
-                    <div class="floating-card">
-                        <h4>🛡️ Secure Hosting</h4>
-                        <p>Enterprise-grade protection</p>
-                    </div>
-                    <div class="floating-card">
-                        <h4>🤝 Collaboration Tools</h4>
-                        <p>Work seamlessly with your team</p>
-                    </div>
-                    <div class="floating-card">
-                        <h4>🚀 Growth Accelerator</h4>
-                        <p>Strategies for rapid scaling</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-
-    <!-- Enhanced Testimonials Section - Replace your existing testimonials section with this -->
-<section class="testimonials" id="testimonials">
-    <div class="testimonials-header">
-        <h2 class="testimonials-title">What Our Clients Say</h2>
-        <p class="testimonials-subtitle">Don't just take our word for it — hear from the brands we've helped transform their digital presence</p>
+      </div>
+      <div class="hero-visual">
+        <div class="hero-graphic"></div>
+      </div>
     </div>
-    
-    <div class="testimonials-viewport">
+  </section>
+
+  <!-- Home Snippets -->
+  <section class="home-snippets">
+    <!-- About Snippet -->
+    <div class="snippet fade-in">
+      <h2>Why Brands <span class="highlight">Choose Digivala</span></h2>
+      <p>We're not your typical digital agency. We're creative rebels who turn bold ideas into breakthrough results. Every project is a chance to push boundaries and create something that truly resonates.</p>
+      
+      <div class="stats-grid">
+        <div class="stat-item">
+          <span class="stat-number">500+</span>
+          <span class="stat-label">Projects Delivered</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-number">98%</span>
+          <span class="stat-label">Client Satisfaction</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-number">3x</span>
+          <span class="stat-label">Average ROI Boost</span>
+        </div>
+      </div>
+      
+      <a href="about.html" class="btn-secondary">Our Story →</a>
+    </div>
+
+    <!-- Services Snippet -->
+    <div class="snippet fade-in">
+      <h2>Services That <span class="highlight">Actually Work</span></h2>
+      <p>From strategy to execution, we handle every aspect of your digital presence with precision and creativity.</p>
+      
+      <ul class="features">
+        <li>
+          <span class="feature-icon">🎯</span>
+          <span class="feature-text">Brand Strategy & Visual Identity</span>
+        </li>
+        <li>
+          <span class="feature-icon">💻</span>
+          <span class="feature-text">Web & Mobile Development</span>
+        </li>
+        <li>
+          <span class="feature-icon">🚀</span>
+          <span class="feature-text">Social Media & Content Creation</span>
+        </li>
+        <li>
+          <span class="feature-icon">📈</span>
+          <span class="feature-text">Performance Marketing & Ads</span>
+        </li>
+        <li>
+          <span class="feature-icon">🎬</span>
+          <span class="feature-text">Video Production & Animation</span>
+        </li>
+        <li>
+          <span class="feature-icon">📊</span>
+          <span class="feature-text">Analytics & Growth Optimization</span>
+        </li>
+      </ul>
+      
+      <a href="services.html" class="btn-secondary">Explore Services →</a>
+    </div>
+
+    <!-- Features Snippet -->
+    <div class="snippet fade-in">
+      <h2>What Makes Us <span class="highlight">Different</span></h2>
+      <p>We combine cutting-edge technology with creative storytelling to deliver experiences that don't just look good – they perform.</p>
+      
+      <ul class="detailed-features">
+        <li>
+          <span class="feature-icon">📊</span>
+          <div class="feature-content">
+            <strong>Data-Driven Creativity</strong>
+            <span class="feature-desc">Every creative decision backed by insights and performance metrics</span>
+          </div>
+        </li>
+        <li>
+          <span class="feature-icon">⚡</span>
+          <div class="feature-content">
+            <strong>Lightning-Fast Delivery</strong>
+            <span class="feature-desc">Agile workflows that get your campaigns live without compromising quality</span>
+          </div>
+        </li>
+        <li>
+          <span class="feature-icon">📈</span>
+          <div class="feature-content">
+            <strong>Scalable Solutions</strong>
+            <span class="feature-desc">Built to grow with your business, from startup to enterprise level</span>
+          </div>
+        </li>
+        <li>
+          <span class="feature-icon">🔧</span>
+          <div class="feature-content">
+            <strong>24/7 Support</strong>
+            <span class="feature-desc">Round-the-clock monitoring and optimization of your digital assets</span>
+          </div>
+        </li>
+      </ul>
+      
+      <a href="features.html" class="btn-secondary">See Features →</a>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section class="testimonials" id="testimonials">
+    <div class="container">
+      <div class="testimonials-header fade-in">
+        <div class="section-badge">Client Success Stories</div>
+        <h2 class="testimonials-title">Brands That Trusted Us to <span style="background: var(--gradient-secondary); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Deliver Results</span></h2>
+        <p class="testimonials-subtitle">Don't just take our word for it — hear from the brands we've helped transform their digital presence and achieve measurable growth</p>
+      </div>
+
+      <div class="testimonials-viewport">
         <div class="testimonials-track" id="testimonials-track">
-            <div class="testimonials-group" id="testimonials-group">
-                <article class="testimonial">
-                    <div class="company-badge">E-Commerce</div>
-                    <div class="testimonial-stars">
-                        <div class="star"></div>
-                        <div class="star"></div>
-                        <div class="star"></div>
-                        <div class="star"></div>
-                        <div class="star"></div>
-                    </div>
-                    <div class="testimonial-message">
-                        Digivala transformed our online presence. Their creative campaigns boosted engagement and drove real growth for our brand. The ROI exceeded all expectations!
-                    </div>
-                    <div class="testimonial-author-row">
-                        <div class="testimonial-avatar">AS</div>
-                        <div>
-                            <div class="testimonial-author">Aarav Sharma</div>
-                            <div class="testimonial-position">CEO, GrowthMart</div>
-                        </div>
-                    </div>
-                </article>
+          <div class="testimonials-group" id="testimonials-group">
+            <!-- Testimonial 1 -->
+            <article class="testimonial">
+              <div class="company-badge">E-Commerce</div>
+              <div class="testimonial-stars">
+                <div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div>
+              </div>
+              <div class="testimonial-message">
+                Digivala completely transformed our online presence. Their creative campaigns didn't just boost engagement – they drove real business growth. The ROI exceeded all our expectations, and our conversion rates increased by 240% in just 6 months.
+              </div>
+              <div class="testimonial-author-row">
+                <div class="testimonial-avatar">AS</div>
+                <div>
+                  <div class="testimonial-author">Aarav Sharma</div>
+                  <div class="testimonial-position">CEO, GrowthMart</div>
+                </div>
+              </div>
+            </article>
 
-                <article class="testimonial">
-                    <div class="company-badge">Marketing</div>
-                    <div class="testimonial-stars">
-                        <div class="star"></div>
-                        <div class="star"></div>
-                        <div class="star"></div>
-                        <div class="star"></div>
-                        <div class="star"></div>
-                    </div>
-                    <div class="testimonial-message">
-                        The team is not only fast but also understands our vision. They turned complex ideas into stunning digital experiences that truly resonate with our audience.
-                    </div>
-                    <div class="testimonial-author-row">
-                        <div class="testimonial-avatar">PV</div>
-                        <div>
-                            <div class="testimonial-author">Priya Verma</div>
-                            <div class="testimonial-position">Marketing Head, BrightAds</div>
-                        </div>
-                    </div>
-                </article>
+            <!-- Testimonial 2 -->
+            <article class="testimonial">
+              <div class="company-badge">Marketing</div>
+              <div class="testimonial-stars">
+                <div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div>
+              </div>
+              <div class="testimonial-message">
+                Working with Digivala was a game-changer. They don't just execute – they strategize, innovate, and deliver results that matter. Our brand visibility increased by 300%, and we finally have a digital presence that matches our ambition.
+              </div>
+              <div class="testimonial-author-row">
+                <div class="testimonial-avatar">PV</div>
+                <div>
+                  <div class="testimonial-author">Priya Verma</div>
+                  <div class="testimonial-position">Marketing Head, BrightAds</div>
+                </div>
+              </div>
+            </article>
 
-                <article class="testimonial">
-                    <div class="company-badge">Fashion</div>
-                    <div class="testimonial-stars">
-                        <div class="star"></div>
-                        <div class="star"></div>
-                        <div class="star"></div>
-                        <div class="star"></div>
-                        <div class="star"></div>
-                    </div>
-                    <div class="testimonial-message">
-                        Our socials finally feel alive. The content strategy was on point, and the results were beyond expectations. Engagement rates tripled within months!
-                    </div>
-                    <div class="testimonial-author-row">
-                        <div class="testimonial-avatar">RM</div>
-                        <div>
-                            <div class="testimonial-author">Rohit Mehta</div>
-                            <div class="testimonial-position">Founder, TrendyWear</div>
-                        </div>
-                    </div>
-                </article>
+            <!-- Testimonial 3 -->
+            <article class="testimonial">
+              <div class="company-badge">Fashion</div>
+              <div class="testimonial-stars">
+                <div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div>
+              </div>
+              <div class="testimonial-message">
+                Our social media was dead until Digivala brought it to life. Their content strategy was spot-on, and the execution was flawless. Engagement rates tripled within 3 months, and we're now trending regularly in our industry.
+              </div>
+              <div class="testimonial-author-row">
+                <div class="testimonial-avatar">RM</div>
+                <div>
+                  <div class="testimonial-author">Rohit Mehta</div>
+                  <div class="testimonial-position">Founder, TrendyWear</div>
+                </div>
+              </div>
+            </article>
 
-                <article class="testimonial">
-                    <div class="company-badge">FinTech</div>
-                    <div class="testimonial-stars">
-                        <div class="star"></div>
-                        <div class="star"></div>
-                        <div class="star"></div>
-                        <div class="star"></div>
-                        <div class="star"></div>
-                    </div>
-                    <div class="testimonial-message">
-                        They don't just deliver projects, they deliver results. Our ROI has never been better since working with them. True digital transformation partners!
-                    </div>
-                    <div class="testimonial-author-row">
-                        <div class="testimonial-avatar">AG</div>
-                        <div>
-                            <div class="testimonial-author">Ananya Gupta</div>
-                            <div class="testimonial-position">COO, FinEdge</div>
-                        </div>
-                    </div>
-                </article>
+            <!-- Testimonial 4 -->
+            <article class="testimonial">
+              <div class="company-badge">FinTech</div>
+              <div class="testimonial-stars">
+                <div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div>
+              </div>
+              <div class="testimonial-message">
+                They don't just deliver projects, they deliver transformation. Our customer acquisition cost dropped by 45% while our lifetime value increased by 180%. Digivala isn't just a vendor – they're true growth partners.
+              </div>
+              <div class="testimonial-author-row">
+                <div class="testimonial-avatar">AG</div>
+                <div>
+                  <div class="testimonial-author">Ananya Gupta</div>
+                  <div class="testimonial-position">COO, FinEdge</div>
+                </div>
+              </div>
+            </article>
 
-                <article class="testimonial">
-                    <div class="company-badge">Food & Beverage</div>
-                    <div class="testimonial-stars">
-                        <div class="star"></div>
-                        <div class="star"></div>
-                        <div class="star"></div>
-                        <div class="star"></div>
-                        <div class="star"></div>
-                    </div>
-                    <div class="testimonial-message">
-                        Best digital partners we've ever had! Professional, innovative, and truly passionate about what they do. They've revolutionized our brand presence.
-                    </div>
-                    <div class="testimonial-author-row">
-                        <div class="testimonial-avatar">KP</div>
-                        <div>
-                            <div class="testimonial-author">Karan Patel</div>
-                            <div class="testimonial-position">Director, FoodiesHub</div>
-                        </div>
-                    </div>
-                </article>
+            <!-- Testimonial 5 -->
+            <article class="testimonial">
+              <div class="company-badge">Food & Beverage</div>
+              <div class="testimonial-stars">
+                <div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div>
+              </div>
+              <div class="testimonial-message">
+                Best investment we've made in our digital presence. Professional, innovative, and genuinely passionate about our success. They turned our local restaurant into a regional brand with a cult following.
+              </div>
+              <div class="testimonial-author-row">
+                <div class="testimonial-avatar">KP</div>
+                <div>
+                  <div class="testimonial-author">Karan Patel</div>
+                  <div class="testimonial-position">Director, FoodiesHub</div>
+                </div>
+              </div>
+            </article>
 
-                <article class="testimonial">
-                    <div class="company-badge">Technology</div>
-                    <div class="testimonial-stars">
-                        <div class="star"></div>
-                        <div class="star"></div>
-                        <div class="star"></div>
-                        <div class="star"></div>
-                        <div class="star"></div>
-                    </div>
-                    <div class="testimonial-message">
-                        Outstanding creativity combined with strategic thinking. They helped us reach new heights in brand recognition and customer engagement.
-                    </div>
-                    <div class="testimonial-author-row">
-                        <div class="testimonial-avatar">SN</div>
-                        <div>
-                            <div class="testimonial-author">Sneha Nair</div>
-                            <div class="testimonial-position">VP Marketing, TechFlow</div>
-                        </div>
-                    </div>
-                </article>
-            </div>
+            <!-- Testimonial 6 -->
+            <article class="testimonial">
+              <div class="company-badge">Technology</div>
+              <div class="testimonial-stars">
+                <div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div>
+              </div>
+              <div class="testimonial-message">
+                Outstanding creativity meets strategic thinking. They helped us penetrate new markets and achieve a 320% increase in qualified leads. Their campaigns don't just look good – they convert like crazy.
+              </div>
+              <div class="testimonial-author-row">
+                <div class="testimonial-avatar">SN</div>
+                <div>
+                  <div class="testimonial-author">Sneha Nair</div>
+                  <div class="testimonial-position">VP Marketing, TechFlow</div>
+                </div>
+              </div>
+            </article>
+          </div>
         </div>
+      </div>
     </div>
+  </section>
+
+  <!-- Refined Home CTA -->
+<section class="cta-section fade-in">
+  <div class="cta-home">
+    <h2>Ready to <span class="highlight">Skyrocket Your Brand?</span></h2>
+    <p>We craft bold, unforgettable experiences that don’t just look amazing—they deliver results your competitors will envy.</p>
+    
+    <div class="hero-buttons">
+      <a href="#contact" class="btn-primary">
+        <span>Start Your Project</span>
+        <span>→</span>
+      </a>
+      <a href="tel:+1234567890" class="btn-secondary">
+        <span>📞</span>
+        <span>Call Us</span>
+      </a>
+    </div>
+  </div>
 </section>
 
+
+
+<!-- Footer placeholder -->
+  <div id="footer"></div>
+
 <script>
-    // Truly seamless infinite scroll for testimonials
-    window.addEventListener('load', () => {
-        const track = document.getElementById('testimonials-track');
-        const group = document.getElementById('testimonials-group');
+  document.addEventListener("DOMContentLoaded", () => {
+    document.body.classList.add("loaded"); // page fade-in
 
-        if (!track || !group) return;
+    const headerEl = document.getElementById("header");
 
-        // Create enough clones to fill viewport + extra for seamless loop
-        const clone1 = group.cloneNode(true);
-        const clone2 = group.cloneNode(true);
-        const clone3 = group.cloneNode(true);
-        
-        clone1.setAttribute('aria-hidden', 'true');
-        clone2.setAttribute('aria-hidden', 'true');
-        clone3.setAttribute('aria-hidden', 'true');
-        
-        track.appendChild(clone1);
-        track.appendChild(clone2);
-        track.appendChild(clone3);
+    // --- Header injection ---
+    fetch("header.html")
+      .then(res => res.text())
+      .then(html => {
+        headerEl.innerHTML = html;
+        headerEl.classList.add("visible");
 
-        let animationStarted = false;
+        // Re-init header behavior after injection
+        initHeader(headerEl);
+      })
+      .catch(err => console.warn("Header failed:", err));
 
-        const testimonialsObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting && !animationStarted) {
-                    startAnimation();
-                    animationStarted = true;
-                }
-            });
+    // --- Footer injection ---
+    fetch("footer.html")
+      .then(res => res.text())
+      .then(html => document.getElementById("footer").innerHTML = html)
+      .catch(err => console.warn("Footer failed:", err));
+
+    // --- Fade-in page elements ---
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach((entry, i) => {
+        if(entry.isIntersecting){
+          setTimeout(() => entry.target.classList.add("visible"), i * 150);
+        }
+      });
+    }, { threshold: 0.1, rootMargin: "0px 0px -50px 0px" });
+    document.querySelectorAll(".fade-in").forEach(el => observer.observe(el));
+  });
+
+  // ✅ Header logic, runs only after it's injected
+  function initHeader(headerEl) {
+    // Smooth scroll
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener("click", e => {
+        const href = anchor.getAttribute("href");
+        if(href && href !== "#"){
+          const target = document.querySelector(href);
+          if(target){
+            e.preventDefault();
+            const headerHeight = headerEl.offsetHeight || 0;
+            window.scrollTo({ top: target.offsetTop - headerHeight, behavior: "smooth" });
+          }
+        }
+      });
+    });
+
+    // Hamburger nav
+    const hamburger = headerEl.querySelector(".hamburger");
+    const navMenu = headerEl.querySelector(".nav-menu");
+    const navLinks = headerEl.querySelectorAll(".nav-link");
+    if(hamburger && navMenu){
+      hamburger.addEventListener("click", () => {
+        hamburger.classList.toggle("active");
+        navMenu.classList.toggle("active");
+      });
+      navLinks.forEach(link => {
+        link.addEventListener("click", () => {
+          hamburger.classList.remove("active");
+          navMenu.classList.remove("active");
         });
+      });
+    }
 
-        testimonialsObserver.observe(track);
+    // Sticky header
+    let lastScrollTop = 0;
+    window.addEventListener("scroll", () => {
+      const current = window.pageYOffset || document.documentElement.scrollTop;
+      headerEl.classList.toggle("scrolled", current > 100);
 
-        function startAnimation() {
-            setTimeout(() => {
-                // Get actual rendered width
-                const groupRect = group.getBoundingClientRect();
-                const groupWidth = groupRect.width;
-                
-                if (groupWidth > 0) {
-                    // Set speed (pixels per second)
-                    const speed = 50;
-                    const duration = groupWidth / speed;
-                    
-                    // Apply animation
-                    track.style.setProperty('--group-width', `${groupWidth}px`);
-                    track.style.setProperty('--scroll-duration', `${duration}s`);
-                    track.classList.add('scrolling');
-                    
-                    console.log('Infinite scroll started:', { groupWidth, duration });
-                }
-            }, 300); // Wait for layout to stabilize
+      if(current > lastScrollTop && current > 200){
+        headerEl.style.top = "-100px"; // hide on scroll down
+      } else {
+        headerEl.style.top = "0"; // show on scroll up
+      }
+      lastScrollTop = current;
+    });
+
+
+// Testimonial scrolling loop
+      
+        const track = document.getElementById("testimonials-track");
+        const group = document.getElementById("testimonials-group");
+
+        if (track && group) {
+        // Clone groups for seamless loop
+        for (let i = 0; i < 2; i++) {
+            const clone = group.cloneNode(true);
+            clone.setAttribute("aria-hidden", "true");
+            track.appendChild(clone);
         }
 
-        // Pause controls
-        track.addEventListener('mouseenter', () => {
-            if (track.classList.contains('scrolling')) {
-                track.style.animationPlayState = 'paused';
-            }
+        // Get width for smooth animation
+        requestAnimationFrame(() => {
+            const groupWidth = group.getBoundingClientRect().width;
+            track.style.setProperty("--group-width", `${groupWidth}px`);
+            track.classList.add("scrolling"); // trigger CSS animation
         });
 
-        track.addEventListener('mouseleave', () => {
-            if (track.classList.contains('scrolling')) {
-                track.style.animationPlayState = 'running';
-            }
+        // Pause on hover
+        track.addEventListener("mouseenter", () => {
+            track.style.animationPlayState = "paused";
         });
-    });
-
-    // Entrance animations
-    document.addEventListener('DOMContentLoaded', () => {
-        const testimonialCards = document.querySelectorAll('.testimonials .testimonial');
-        
-        const entranceObserver = new IntersectionObserver((entries) => {
-            entries.forEach((entry, index) => {
-                if (entry.isIntersecting) {
-                    // Stagger the entrance animations
-                    setTimeout(() => {
-                        entry.target.style.opacity = '1';
-                        entry.target.style.transform = 'translateY(0)';
-                    }, index * 100);
-                }
-            });
-        }, { threshold: 0.2 });
-
-        testimonialCards.forEach(card => {
-            card.style.opacity = '0';
-            card.style.transform = 'translateY(30px)';
-            card.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
-            entranceObserver.observe(card);
+        track.addEventListener("mouseleave", () => {
+            track.style.animationPlayState = "running";
         });
-    });
+        }
+
+
+      // Page fade-in
+      document.body.style.opacity = "0";
+      document.body.style.transition = "opacity 0.3s ease";
+      requestAnimationFrame(() => { document.body.style.opacity = "1"; });
+
+
+  }
 </script>
-
-   <!-- Contact Us -->
-    <section class="contact" id="contact">
-    <div class="container">
-        <div class="contact-content fade-in">
-        <!-- <div class="section-badge">📬 Contact Us</div> -->
-        <h2>Let’s Build Something Great Together</h2>
-        <p>Got an idea, project, or collab in mind? Drop us a line — we’d love to hear from you.</p>
-        
-        <form class="contact-form">
-            <input type="text" class="input-field" placeholder="Your Name" required>
-            <input type="email" class="input-field" placeholder="Your Email" required>
-            <textarea class="input-field" placeholder="Your Message" rows="5" required></textarea>
-            <button type="submit" class="submit-btn">Send Message</button>
-        </form>
-        </div>
-    </div>
-    </section>
+<div class="overlay"></div>
 
 
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-brand">
-                    <h3>Digivala</h3>
-                    <p>Digital solutions that don't just look good – they perform. We're not here to play it safe, we're here to make waves.</p>
-                    <div class="social-links">
-                        <a href="#" class="social-link">📘</a>
-                        <a href="#" class="social-link">📸</a>
-                        <a href="#" class="social-link">🐦</a>
-                        <a href="#" class="social-link">💼</a>
-                        <a href="#" class="social-link">🎵</a>
-                    </div>
-                </div>
-                <div class="footer-links">
-                    <h4>Services</h4>
-                    <ul>
-                        <li><a href="#">Web Development</a></li>
-                        <li><a href="#">Social Media</a></li>
-                        <li><a href="#">SEO & Marketing</a></li>
-                        <li><a href="#">Brand Design</a></li>
-                        <li><a href="#">Content Creation</a></li>
-                    </ul>
-                </div>
-                <div class="footer-links">
-                    <h4>Company</h4>
-                    <ul>
-                        <li><a href="#home">Home</a></li>
-                        <li><a href="#services">Services</a></li>
-                        <li><a href="#about">About Us</a></li>
-                        <li><a href="#features">Features</a></li>
-                        <li><a href="#contact">Contact</a></li>
-                    </ul>
-                </div>
-                <div class="footer-links">
-                    <h4>Contact Info</h4>
-                    <ul>
-                        <li>Email: <a href="mailto:info@digivala.in">info@digivala.in</a></li>
-                        <li>Address: 131 Jawahar Puram, Albatiya Road, Shahganj, Agra 282010</li>
-                    </ul>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2025 HireEdge Digital Solutions LLP. All rights reserved. Made with 💜 and lots of ☕</p>
-                <ul class="footer-bottom-links">
-                    <li><a href="#">Privacy Policy</a></li>
-                    <li><a href="#">Terms of Service</a></li>
-                    <li><a href="#">Cookie Policy</a></li>
-                </ul>
-            </div>
-        </div>
-    </footer>
-
-    <script>
-        // Header scroll effect
-        window.addEventListener('scroll', () => {
-            const header = document.getElementById('header');
-            if (window.scrollY > 50) {
-                header.classList.add('scrolled');
-            } else {
-                header.classList.remove('scrolled');
-            }
-        });
-
-        // Smooth scrolling for navigation links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                const href = this.getAttribute('href');
-                // Only scroll if href is not "#" and not empty
-                if (href && href !== "#") {
-                    e.preventDefault();
-                    const target = document.querySelector(href);
-                    if (target) {
-                        target.scrollIntoView({
-                            behavior: 'smooth',
-                            block: 'start'
-                        });
-                    }
-                }
-            });
-        });
-
-        // Intersection Observer for fade-in animations
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
-            });
-        }, observerOptions);
-
-        // Observe all fade-in elements
-        document.querySelectorAll('.fade-in').forEach(el => {
-            observer.observe(el);
-        });
-
-        // Newsletter form submission
-        document.querySelector('.newsletter-form').addEventListener('submit', function(e) {
-            e.preventDefault();
-            const email = this.querySelector('.email-input').value;
-            const button = this.querySelector('.submit-btn');
-            
-            // Simple form validation
-            if (email && email.includes('@')) {
-                button.textContent = 'Welcome to the Crew! 🎉';
-                button.style.background = 'var(--gradient-secondary)';
-                
-                setTimeout(() => {
-                    button.textContent = 'Join the Crew';
-                    button.style.background = 'var(--gradient-secondary)';
-                    this.reset();
-                }, 3000);
-            }
-        });
-
-        // Add some interactive hover effects
-        document.querySelectorAll('.service-card').forEach(card => {
-            card.addEventListener('mouseenter', function() {
-                this.style.transform = 'translateY(-15px) scale(1.02)';
-            });
-            
-            card.addEventListener('mouseleave', function() {
-                this.style.transform = 'translateY(0) scale(1)';
-            });
-        });
-
-        // Dynamic cursor effect (optional enhancement)
-        document.addEventListener('mousemove', (e) => {
-            const cursor = document.querySelector('.custom-cursor');
-            if (!cursor) {
-                const cursorEl = document.createElement('div');
-                cursorEl.className = 'custom-cursor';
-                cursorEl.style.cssText = `
-                    position: fixed;
-                    width: 20px;
-                    height: 20px;
-                    background: var(--gradient-secondary);
-                    border-radius: 50%;
-                    pointer-events: none;
-                    z-index: 9999;
-                    opacity: 0.7;
-                    transition: transform 0.1s ease;
-                `;
-                document.body.appendChild(cursorEl);
-            }
-            
-            const cursorEl = document.querySelector('.custom-cursor');
-            cursorEl.style.left = e.clientX - 10 + 'px';
-            cursorEl.style.top = e.clientY - 10 + 'px';
-        });
-
-        // Add click ripple effect to buttons
-        document.querySelectorAll('button.btn-primary, button.btn-secondary, button.submit-btn').forEach(button => {
-            button.addEventListener('click', function(e) {
-                const ripple = document.createElement('span');
-                const rect = this.getBoundingClientRect();
-                const size = Math.max(rect.width, rect.height);
-                const x = e.clientX - rect.left - size / 2;
-                const y = e.clientY - rect.top - size / 2;
-                
-                ripple.style.cssText = `
-                    position: absolute;
-                    width: ${size}px;
-                    height: ${size}px;
-                    left: ${x}px;
-                    top: ${y}px;
-                    background: rgba(255, 255, 255, 0.3);
-                    border-radius: 50%;
-                    transform: scale(0);
-                    animation: ripple 0.6s ease-out;
-                    pointer-events: none;
-                `;
-                
-                this.style.position = 'relative';
-                this.style.overflow = 'hidden';
-                this.appendChild(ripple);
-                
-                setTimeout(() => {
-                    ripple.remove();
-                }, 600);
-            });
-        });
-
-        // Add the ripple animation
-        const style = document.createElement('style');
-        style.textContent = `
-            @keyframes ripple {
-                to {
-                    transform: scale(2);
-                    opacity: 0;
-                }
-            }
-        `;
-        document.head.appendChild(style);
-
-        // Parallax effect for hero section
-        window.addEventListener('scroll', () => {
-            const scrolled = window.pageYOffset;
-            const heroGraphic = document.querySelector('.hero-graphic');
-            if (heroGraphic) {
-                heroGraphic.style.transform = `rotate(${scrolled * 0.1}deg) translateY(${scrolled * 0.1}px)`;
-            }
-        });
-
-        // Loading animation
-        window.addEventListener('load', () => {
-            document.body.style.opacity = '0';
-            document.body.style.transition = 'opacity 0.5s ease';
-            
-            setTimeout(() => {
-                document.body.style.opacity = '1';
-            }, 100);
-        });
-    </script>
 </body>
 </html>
