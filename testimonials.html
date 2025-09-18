@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Testimonials</title>
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+<!-- Enhanced Testimonials Section - Replace your existing testimonials section with this -->
+<section class="testimonials" id="testimonials">
+    <div class="testimonials-header">
+        <h2 class="testimonials-title">What Our Clients Say</h2>
+        <p class="testimonials-subtitle">Don't just take our word for it — hear from the brands we've helped transform their digital presence</p>
+    </div>
+    
+    <div class="testimonials-viewport">
+        <div class="testimonials-track" id="testimonials-track">
+            <div class="testimonials-group" id="testimonials-group">
+                <article class="testimonial">
+                    <div class="company-badge">E-Commerce</div>
+                    <div class="testimonial-stars">
+                        <div class="star"></div>
+                        <div class="star"></div>
+                        <div class="star"></div>
+                        <div class="star"></div>
+                        <div class="star"></div>
+                    </div>
+                    <div class="testimonial-message">
+                        Digivala transformed our online presence. Their creative campaigns boosted engagement and drove real growth for our brand. The ROI exceeded all expectations!
+                    </div>
+                    <div class="testimonial-author-row">
+                        <div class="testimonial-avatar">AS</div>
+                        <div>
+                            <div class="testimonial-author">Aarav Sharma</div>
+                            <div class="testimonial-position">CEO, GrowthMart</div>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="testimonial">
+                    <div class="company-badge">Marketing</div>
+                    <div class="testimonial-stars">
+                        <div class="star"></div>
+                        <div class="star"></div>
+                        <div class="star"></div>
+                        <div class="star"></div>
+                        <div class="star"></div>
+                    </div>
+                    <div class="testimonial-message">
+                        The team is not only fast but also understands our vision. They turned complex ideas into stunning digital experiences that truly resonate with our audience.
+                    </div>
+                    <div class="testimonial-author-row">
+                        <div class="testimonial-avatar">PV</div>
+                        <div>
+                            <div class="testimonial-author">Priya Verma</div>
+                            <div class="testimonial-position">Marketing Head, BrightAds</div>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="testimonial">
+                    <div class="company-badge">Fashion</div>
+                    <div class="testimonial-stars">
+                        <div class="star"></div>
+                        <div class="star"></div>
+                        <div class="star"></div>
+                        <div class="star"></div>
+                        <div class="star"></div>
+                    </div>
+                    <div class="testimonial-message">
+                        Our socials finally feel alive. The content strategy was on point, and the results were beyond expectations. Engagement rates tripled within months!
+                    </div>
+                    <div class="testimonial-author-row">
+                        <div class="testimonial-avatar">RM</div>
+                        <div>
+                            <div class="testimonial-author">Rohit Mehta</div>
+                            <div class="testimonial-position">Founder, TrendyWear</div>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="testimonial">
+                    <div class="company-badge">FinTech</div>
+                    <div class="testimonial-stars">
+                        <div class="star"></div>
+                        <div class="star"></div>
+                        <div class="star"></div>
+                        <div class="star"></div>
+                        <div class="star"></div>
+                    </div>
+                    <div class="testimonial-message">
+                        They don't just deliver projects, they deliver results. Our ROI has never been better since working with them. True digital transformation partners!
+                    </div>
+                    <div class="testimonial-author-row">
+                        <div class="testimonial-avatar">AG</div>
+                        <div>
+                            <div class="testimonial-author">Ananya Gupta</div>
+                            <div class="testimonial-position">COO, FinEdge</div>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="testimonial">
+                    <div class="company-badge">Food & Beverage</div>
+                    <div class="testimonial-stars">
+                        <div class="star"></div>
+                        <div class="star"></div>
+                        <div class="star"></div>
+                        <div class="star"></div>
+                        <div class="star"></div>
+                    </div>
+                    <div class="testimonial-message">
+                        Best digital partners we've ever had! Professional, innovative, and truly passionate about what they do. They've revolutionized our brand presence.
+                    </div>
+                    <div class="testimonial-author-row">
+                        <div class="testimonial-avatar">KP</div>
+                        <div>
+                            <div class="testimonial-author">Karan Patel</div>
+                            <div class="testimonial-position">Director, FoodiesHub</div>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="testimonial">
+                    <div class="company-badge">Technology</div>
+                    <div class="testimonial-stars">
+                        <div class="star"></div>
+                        <div class="star"></div>
+                        <div class="star"></div>
+                        <div class="star"></div>
+                        <div class="star"></div>
+                    </div>
+                    <div class="testimonial-message">
+                        Outstanding creativity combined with strategic thinking. They helped us reach new heights in brand recognition and customer engagement.
+                    </div>
+                    <div class="testimonial-author-row">
+                        <div class="testimonial-avatar">SN</div>
+                        <div>
+                            <div class="testimonial-author">Sneha Nair</div>
+                            <div class="testimonial-position">VP Marketing, TechFlow</div>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+    // Truly seamless infinite scroll for testimonials
+    window.addEventListener('load', () => {
+        const track = document.getElementById('testimonials-track');
+        const group = document.getElementById('testimonials-group');
+
+        if (!track || !group) return;
+
+        // Create enough clones to fill viewport + extra for seamless loop
+        const clone1 = group.cloneNode(true);
+        const clone2 = group.cloneNode(true);
+        const clone3 = group.cloneNode(true);
+        
+        clone1.setAttribute('aria-hidden', 'true');
+        clone2.setAttribute('aria-hidden', 'true');
+        clone3.setAttribute('aria-hidden', 'true');
+        
+        track.appendChild(clone1);
+        track.appendChild(clone2);
+        track.appendChild(clone3);
+
+        let animationStarted = false;
+
+        const testimonialsObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting && !animationStarted) {
+                    startAnimation();
+                    animationStarted = true;
+                }
+            });
+        });
+
+        testimonialsObserver.observe(track);
+
+        function startAnimation() {
+            setTimeout(() => {
+                // Get actual rendered width
+                const groupRect = group.getBoundingClientRect();
+                const groupWidth = groupRect.width;
+                
+                if (groupWidth > 0) {
+                    // Set speed (pixels per second)
+                    const speed = 50;
+                    const duration = groupWidth / speed;
+                    
+                    // Apply animation
+                    track.style.setProperty('--group-width', `${groupWidth}px`);
+                    track.style.setProperty('--scroll-duration', `${duration}s`);
+                    track.classList.add('scrolling');
+                    
+                    console.log('Infinite scroll started:', { groupWidth, duration });
+                }
+            }, 300); // Wait for layout to stabilize
+        }
+
+        // Pause controls
+        track.addEventListener('mouseenter', () => {
+            if (track.classList.contains('scrolling')) {
+                track.style.animationPlayState = 'paused';
+            }
+        });
+
+        track.addEventListener('mouseleave', () => {
+            if (track.classList.contains('scrolling')) {
+                track.style.animationPlayState = 'running';
+            }
+        });
+    });
+
+    // Entrance animations
+    document.addEventListener('DOMContentLoaded', () => {
+        const testimonialCards = document.querySelectorAll('.testimonials .testimonial');
+        
+        const entranceObserver = new IntersectionObserver((entries) => {
+            entries.forEach((entry, index) => {
+                if (entry.isIntersecting) {
+                    // Stagger the entrance animations
+                    setTimeout(() => {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }, index * 100);
+                }
+            });
+        }, { threshold: 0.2 });
+
+        testimonialCards.forEach(card => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(30px)';
+            card.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
+            entranceObserver.observe(card);
+        });
+    });
+</script>
+
+</body>
+</html>
