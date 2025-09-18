@@ -4,7 +4,8 @@
   <meta charset="UTF-8">
   <title>Our Services | Digivala</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="/assets/css/style.css">
+  <script src="/assets/js/script.js"></script>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -57,63 +58,63 @@
             <div class="services-grid">
                 <div class="service-card fade-in">
                     <div class="service-video">
-                        <video src="assets/videos/1.mp4" autoplay loop muted playsinline></video>
+                        <video src="/assets/videos/1.mp4" autoplay loop muted playsinline></video>
                     </div>
                     <h3 class="service-title"> Digital Marketing</h3>
                     <p class="service-description">Build powerful strategies that blend creativity and data to grow your brand online.</p>
                 </div>
                 <div class="service-card fade-in">
                     <div class="service-video">
-                        <video src="assets/videos/2.mp4" autoplay loop muted playsinline></video>
+                        <video src="/assets/videos/2.mp4" autoplay loop muted playsinline></video>
                     </div>
                     <h3 class="service-title">Social Media Management</h3>
                     <p class="service-description">We make your socials pop off with content that gets shared, saved, and screenshot.</p>
                 </div>
                 <div class="service-card fade-in">
                     <div class="service-video">
-                        <video src="assets/videos/3.mp4" autoplay loop muted playsinline></video>
+                        <video src="/assets/videos/3.mp4" autoplay loop muted playsinline></video>
                     </div>
                     <h3 class="service-title">META Ads </h3>
                     <p class="service-description">Get discovered by the right people at the right time with strategies that actually work.</p>
                 </div>
                 <div class="service-card fade-in">
                     <div class="service-video">
-                        <video src="assets/videos/4.mp4" autoplay loop muted playsinline></video>
+                        <video src="/assets/videos/4.mp4" autoplay loop muted playsinline></video>
                     </div>
                     <h3 class="service-title">Google Ads</h3>
                     <p class="service-description">Capture intent-driven traffic with smart search and display campaigns.</p>
                 </div>
                 <div class="service-card fade-in">
                     <div class="service-video">
-                        <video src="assets/videos/5.mp4" autoplay loop muted playsinline></video>
+                        <video src="/assets/videos/5.mp4" autoplay loop muted playsinline></video>
                     </div>
                     <h3 class="service-title">Web Development</h3>
                     <p class="service-description">Websites so clean they belong in a museum, yet so functional they convert like crazy.</p>
                 </div>
                 <div class="service-card fade-in">
                     <div class="service-video">
-                        <video src="assets/videos/6.mp4" autoplay loop muted playsinline></video>
+                        <video src="/assets/videos/6.mp4" autoplay loop muted playsinline></video>
                     </div>
                     <h3 class="service-title">Logo Creation</h3>
                     <p class="service-description">Logos and brands that stick in minds and hearts – the kind people tattoo on themselves.</p>
                 </div>
                 <div class="service-card fade-in">
                     <div class="service-video">
-                        <video src="assets/videos/7.mp4" autoplay loop muted playsinline></video>
+                        <video src="/assets/videos/7.mp4" autoplay loop muted playsinline></video>
                     </div>
                     <h3 class="service-title">Advertising</h3>
                     <p class="service-description">Connect with creators who actually align with your vibe and values.</p>
                 </div>
                 <div class="service-card fade-in">
                     <div class="service-video">
-                        <video src="assets/videos/8.mp4" autoplay loop muted playsinline></video>
+                        <video src="/assets/videos/8.mp4" autoplay loop muted playsinline></video>
                     </div>
                     <h3 class="service-title">SMS Marketing</h3>
                     <p class="service-description">Send direct, personal messages that connect instantly with your audience.</p>
                 </div>
                 <div class="service-card fade-in">
                     <div class="service-video">
-                        <video src="assets/videos/9.mp4" autoplay loop muted playsinline></video>
+                        <video src="/assets/videos/9.mp4" autoplay loop muted playsinline></video>
                     </div>
                     <h3 class="service-title">Email Marketing</h3>
                     <p class="service-description">Deliver personalized campaigns that nurture leads and drive conversions.</p>
@@ -130,8 +131,8 @@
 
 
     <!-- Footer placeholder -->
-  <div id="footer"></div>
-
+     <div id="footer"></div>
+  
 <script>
   document.addEventListener("DOMContentLoaded", () => {
     document.body.classList.add("loaded"); // page fade-in
@@ -140,7 +141,7 @@
     const overlay = document.querySelector(".overlay"); // select overlay
 
     // --- Header injection ---
-    fetch("header.html")
+    fetch("/header.html")
       .then(res => res.text())
       .then(html => {
         headerEl.innerHTML = html;
@@ -152,7 +153,7 @@
       .catch(err => console.warn("Header failed:", err));
 
     // --- Footer injection ---
-    fetch("footer.html")
+    fetch("/footer.html")
       .then(res => res.text())
       .then(html => document.getElementById("footer").innerHTML = html)
       .catch(err => console.warn("Footer failed:", err));

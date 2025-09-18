@@ -4,7 +4,8 @@
   <meta charset="UTF-8">
   <title>About Digivala</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="/assets/css/style.css">
+  <script src="/assets/js/script.js"></script>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
   <style>
@@ -69,7 +70,7 @@
       <div class="about-grid">
         <div class="about-card fade-in">
           <div class="about-media">
-            <video src="assets/videos/10.mp4" autoplay loop muted playsinline></video>
+            <video src="/assets/videos/10.mp4" autoplay loop muted playsinline></video>
             <!-- OR <img src="assets/images/about1.jpg" alt="Expertise"> -->
           </div>
           <h3>Expertise</h3>
@@ -77,35 +78,35 @@
         </div>
         <div class="about-card fade-in">
           <div class="about-media">
-            <video src="assets/videos/11.mp4" autoplay loop muted playsinline></video>
+            <video src="/assets/videos/11.mp4" autoplay loop muted playsinline></video>
           </div>
           <h3>Data-Driven</h3>
           <p>Strategies built on data, not guesswork</p>
         </div>
         <div class="about-card fade-in">
           <div class="about-media">
-            <video src="assets/videos/15.mp4" autoplay loop muted playsinline></video>
+            <video src="/assets/videos/15.mp4" autoplay loop muted playsinline></video>
           </div>
           <h3>Transparency</h3>
           <p>Transparent process & measurable results</p>
         </div>
         <div class="about-card fade-in">
           <div class="about-media">
-            <video src="assets/videos/12.mp4" autoplay loop muted playsinline></video>
+            <video src="/assets/videos/12.mp4" autoplay loop muted playsinline></video>
           </div>
           <h3>Storytelling</h3>
           <p>Creative storytelling that connects with audiences</p>
         </div>
         <div class="about-card fade-in">
           <div class="about-media">
-            <video src="assets/videos/13.mp4" autoplay loop muted playsinline></video>
+            <video src="/assets/videos/13.mp4" autoplay loop muted playsinline></video>
           </div>
           <h3>Support</h3>
           <p>Long-term support to keep your brand thriving</p>
         </div>
         <div class="about-card fade-in">
           <div class="about-media">
-            <video src="assets/videos/14.mp4" autoplay loop muted playsinline></video>
+            <video src="/assets/videos/14.mp4" autoplay loop muted playsinline></video>
           </div>
           <h3>Future-Ready</h3>
           <p>Future-ready solutions for tomorrow’s challenges</p>
@@ -122,8 +123,8 @@
 
 
   <!-- Footer placeholder -->
-  <div id="footer"></div>
-
+ 
+ <div id="footer"></div>
 <script>
   document.addEventListener("DOMContentLoaded", () => {
     document.body.classList.add("loaded"); // page fade-in
@@ -132,7 +133,7 @@
     const overlay = document.querySelector(".overlay"); // select overlay
 
     // --- Header injection ---
-    fetch("header.html")
+    fetch("/header.html")
       .then(res => res.text())
       .then(html => {
         headerEl.innerHTML = html;
@@ -144,7 +145,7 @@
       .catch(err => console.warn("Header failed:", err));
 
     // --- Footer injection ---
-    fetch("footer.html")
+    fetch("/footer.html")
       .then(res => res.text())
       .then(html => document.getElementById("footer").innerHTML = html)
       .catch(err => console.warn("Footer failed:", err));
