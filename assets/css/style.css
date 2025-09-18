@@ -202,6 +202,28 @@
   transform: translateY(-8.5px) rotate(-45deg);
 }
 
+
+/* ===== Overlay with dark + blur ===== */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.45); /* subtle dark layer */
+  backdrop-filter: blur(8px);       /* glassmorphism blur */
+  -webkit-backdrop-filter: blur(8px); /* Safari support */
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+  z-index: 900; /* below nav menu */
+}
+
+.overlay.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
 /* Mobile Nav with fade-slide */
 .nav-menu.active {
   display: flex;
@@ -249,26 +271,6 @@
   }
 }
 
-/* ===== Overlay with dark + blur ===== */
-.overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.45); /* subtle dark layer */
-  backdrop-filter: blur(8px);       /* glassmorphism blur */
-  -webkit-backdrop-filter: blur(8px); /* Safari support */
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.3s ease;
-  z-index: 9999; /* below nav menu */
-}
-
-.overlay.active {
-  opacity: 1;
-  pointer-events: auto;
-}
 
 
 
@@ -536,7 +538,7 @@
     font-size: 1rem;
     line-height: 1.6;
     color: rgba(255,255,255,0.85);
-    text-align: center;
+    text-align: left;
     margin-bottom: 2rem;
     z-index: 2;
 }
@@ -1538,14 +1540,18 @@
  */
 
 
-        .footer-links h4 {
-            font-weight: 600;
-            margin-bottom: 1rem;
-        }
+       .footer-links h4 {
+    font-weight: 600;
+    margin-bottom: 1.5rem; /* increased gap between heading and links */
+}
 
         .footer-links ul {
             list-style: none;
+            padding: 0;
+            margin: 0; /* reset any default margins */
         }
+        
+        
 
         .footer-links a {
             color: var(--text-secondary);
@@ -1583,6 +1589,12 @@
         .footer-bottom-links a:hover {
             color: var(--text-primary);
         }
+        .footer-links .footer-info {
+            color: var(--text-secondary);
+            font-weight: 400; /* normal weight like links */
+        }
+
+        
 
         /* Responsive Design */
         @media (max-width: 768px) {

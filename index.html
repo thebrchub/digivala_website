@@ -50,7 +50,8 @@
 <body>
 
   <!-- Header placeholder -->
-  <div id="header"></div>
+  <header id="header" data-header></header>
+  <div class="overlay"></div>
 
 
   <!-- Hero Section -->
@@ -90,6 +91,7 @@
     <div class="snippet fade-in">
       <h2>Why Brands <span class="highlight">Choose Digivala</span></h2>
       <p>We're not your typical digital agency. We're creative rebels who turn bold ideas into breakthrough results. Every project is a chance to push boundaries and create something that truly resonates.</p>
+      <p>From crafting standout branding to building cutting-edge digital experiences, we help businesses leave a lasting impression. Our team thrives on innovation, collaboration, and delivering results that matter.</p>
       
             <div class="stats-grid">
                 <div class="stat-item">
@@ -358,6 +360,7 @@
     document.body.classList.add("loaded"); // page fade-in
 
     const headerEl = document.getElementById("header");
+    const overlay = document.querySelector(".overlay"); // select overlay
 
     // --- Header injection ---
     fetch("header.html")
@@ -367,7 +370,7 @@
         headerEl.classList.add("visible");
 
         // Re-init header behavior after injection
-        initHeader(headerEl);
+        initHeader(headerEl, overlay);
       })
       .catch(err => console.warn("Header failed:", err));
 
@@ -389,7 +392,7 @@
   });
 
   // ✅ Header logic, runs only after it's injected
-  function initHeader(headerEl) {
+  function initHeader(headerEl, overlay) {
     // Smooth scroll
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
       anchor.addEventListener("click", e => {
@@ -409,17 +412,33 @@
     const hamburger = headerEl.querySelector(".hamburger");
     const navMenu = headerEl.querySelector(".nav-menu");
     const navLinks = headerEl.querySelectorAll(".nav-link");
+
     if(hamburger && navMenu){
-      hamburger.addEventListener("click", () => {
+      const toggleMenu = () => {
         hamburger.classList.toggle("active");
         navMenu.classList.toggle("active");
-      });
+        if(overlay) overlay.classList.toggle("active"); // toggle overlay
+      };
+
+      hamburger.addEventListener("click", toggleMenu);
+
+      // Close menu when a nav link is clicked
       navLinks.forEach(link => {
         link.addEventListener("click", () => {
           hamburger.classList.remove("active");
           navMenu.classList.remove("active");
+          if(overlay) overlay.classList.remove("active");
         });
       });
+
+      // Close menu when overlay is clicked
+      if(overlay){
+        overlay.addEventListener("click", () => {
+          hamburger.classList.remove("active");
+          navMenu.classList.remove("active");
+          overlay.classList.remove("active");
+        });
+      }
     }
 
     // Sticky header
@@ -435,9 +454,9 @@
       }
       lastScrollTop = current;
     });
+  }
 
-
-// Testimonial scrolling loop
+  // Testimonial scrolling loop
       
         const track = document.getElementById("testimonials-track");
         const group = document.getElementById("testimonials-group");
@@ -473,10 +492,14 @@
       requestAnimationFrame(() => { document.body.style.opacity = "1"; });
 
 
-  }
 </script>
-<div class="overlay"></div>
+
+
 
 
 </body>
 </html>
+
+
+
+
