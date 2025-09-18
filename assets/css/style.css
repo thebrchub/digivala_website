@@ -108,8 +108,8 @@
 }
 
 .logo img {
-  width: 40px;
-  height: 40px;
+  width: 60px;
+  height: 60px;
   object-fit: contain;
 }
 
@@ -443,7 +443,7 @@
             position: absolute;
             width: 80%;
             height: 80%;
-            background: url("logo_hero.jpeg") no-repeat center/cover;
+            background: url("assets/images/logo_hero_new.png") no-repeat center/cover;
             border-radius: 50%;  /* makes it circular */
             overflow: hidden;    /* ensures corners get cut */
             inset: 0;
