@@ -447,18 +447,48 @@
             width: 80%;
             height: 80%;
             background: url("logo_hero.jpg") no-repeat center/cover;
-            border-radius: 50%;  /* makes it circular */
-            overflow: hidden;    /* ensures corners get cut */
+            border-radius: 50%;
+            overflow: hidden;
             inset: 0;
             margin: auto;
             z-index: 2;
-        }
+            }
 
-        @keyframes rotate {
+        @keyframes slideInRotate {
+            0% {
+                transform: translateX(-150%) rotate(-180deg) scale(0.5);
+                opacity: 0;
+            }
+            60% {
+                transform: translateX(20%) rotate(15deg) scale(1.05);
+                opacity: 1;
+            }
+            100% {
+                transform: translateX(0) rotate(0deg) scale(1);
+                opacity: 1;
+            }
+            }
+            @media (max-width: 1080px) {
+                .hero {
+                    min-height: 140vh; /* bump it a little to avoid visual shift */
+                }
+                
+            }
+
+            @media (min-width: 1081px) and (max-width: 1182px) {
+                .hero {
+                    min-height: 140vh; /* slightly less than full height to bring it down */
+                    padding-top: 2rem; /* optional: push content down a bit */
+                    padding-bottom: 2rem; 
+                }
+            }
+            
+
+        /* @keyframes rotate {
             from { transform: rotate(0deg); }
-            /* to { transform: rotate(360deg); } */
-            to { transform: rotate(0deg); } /*disable animation*/
-        }
+            to { transform: rotate(360deg); }
+            to { transform: rotate(0deg); } disable animation
+        } */
 
 
             /* ==========================================================================

@@ -32,7 +32,6 @@ const injectHeaderFooter = () => {
   return Promise.all([headerPromise, footerPromise]);
 };
 
-
 /**
  * Navbar toggle
  */
@@ -58,9 +57,7 @@ const initNavbar = (overlay) => {
   addEventOnElem(navbarLinks, "click", closeNavbar);
 
   // Close navbar when overlay is clicked
-  if (overlay) {
-    overlay.addEventListener("click", closeNavbar);
-  }
+  if (overlay) overlay.addEventListener("click", closeNavbar);
 };
 
 /**
@@ -100,6 +97,25 @@ const initFadeInObserver = () => {
 };
 
 /**
+ * Hero Graphic Animation
+ */
+const initHeroAnimation = () => {
+  const heroEl = document.querySelector('.hero-graphic');
+  if (!heroEl) return;
+
+  const heroObserver = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        heroEl.classList.add('animate');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.35 });
+
+  heroObserver.observe(heroEl);
+};
+
+/**
  * Page transition: Fade In / Fade Out with fade-page class
  */
 const initPageTransitions = () => {
@@ -133,21 +149,11 @@ const initPageTransitions = () => {
 /**
  * Initialize everything after header/footer is loaded
  */
-/**
- * Initialize everything after header/footer is loaded
- */
 injectHeaderFooter().then(() => {
   const overlay = document.querySelector(".overlay");
   initNavbar(overlay);
   initHeaderScroll();
   initFadeInObserver();
+  initHeroAnimation();
   initPageTransitions();
-
-  // Remove duplicate hamburger/overlay logic here
-
-  document.body.classList.add("fade-page");
-  requestAnimationFrame(() => {
-    document.body.classList.add("loaded");
-  });
 });
-
