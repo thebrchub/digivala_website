@@ -105,7 +105,7 @@
     const overlay = document.querySelector(".overlay"); // select overlay
 
     // --- Header injection ---
-    fetch("/header.html")
+    fetch("/partials/header.html")
       .then(res => res.text())
       .then(html => {
         headerEl.innerHTML = html;
@@ -117,7 +117,7 @@
       .catch(err => console.warn("Header failed:", err));
 
     // --- Footer injection ---
-    fetch("/footer.html")
+    fetch("/partials/footer.html")
       .then(res => res.text())
       .then(html => document.getElementById("footer").innerHTML = html)
       .catch(err => console.warn("Footer failed:", err));
