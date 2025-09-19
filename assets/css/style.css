@@ -467,13 +467,14 @@
 
 /* Home Snippets Section */
 .home-snippets {
-    max-width: 1200px;
+   max-width: 1200px;
     margin: 0 auto;
-    padding: 5rem 2rem;
+    padding: 5rem 1rem; /* reduce side padding */
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    gap: 2.5rem;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* reduced min width */
+    gap: 2rem;
     align-items: stretch;
+    justify-items: center; /* center cards horizontally */
 }
 
 /* Snippet Cards */
@@ -491,6 +492,8 @@
     position: relative;
     overflow: hidden;
     justify-content: space-between; /* pushes CTA button to bottom */
+     width: 100%;
+    max-width: 340px; /* prevents stretching awkwardly */
 }
 
 /* Gradient overlay on hover */
@@ -681,7 +684,7 @@
 .cta-home {
   /* background: linear-gradient(135deg, #0f172a, #1e293b); */
   color: #fff;
-  padding: 4rem 2rem;
+  padding: 3.5rem 2rem; /* slightly reduced padding */
   border-radius: 1.5rem;
   text-align: center;
   /* box-shadow: 0 8px 30px rgba(0, 0, 0, 0.25); */
@@ -707,7 +710,7 @@
         }
 
 .cta-home h2 {
-  font-size: clamp(2rem, 5vw, 2.8rem);
+  font-size: clamp(1.5rem, 4vw, 2.4rem); /* softer scale */
   font-weight: 700;
   margin-bottom: 1.5rem;
   line-height: 1.2;
@@ -718,12 +721,13 @@
 }
 
 .cta-home p {
-  font-size: 1.1rem;
-  margin-bottom: 2.5rem;
+  font-size: 1rem;
+  margin-bottom: 2rem;
   color: #cbd5e1;
   max-width: 650px;
   margin-left: auto;
   margin-right: auto;
+  line-height: 1.6;
 }
 
 .cta-home .hero-buttons {
@@ -739,7 +743,7 @@
   align-items: center;
   gap: 0.5rem;
   padding: 0.9rem 1.6rem;
-  font-size: 1rem;
+  font-size: 0.95rem; /* smaller, more balanced */
   font-weight: 600;
   border-radius: 2rem;
   transition: all 0.3s ease;
@@ -776,6 +780,25 @@
   to {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+/* Responsive tuning */
+@media (max-width: 768px) {
+  .cta-home h2 {
+    font-size: 1.8rem;
+  }
+  .cta-home p {
+    font-size: 0.95rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .cta-home h2 {
+    font-size: 1.5rem;
+  }
+  .cta-home p {
+    font-size: 0.9rem;
   }
 }
 
@@ -1676,6 +1699,47 @@
             }
         }
 
+        @media (max-width: 1024px) {
+    .footer-content {
+        grid-template-columns: 1fr 1fr; /* two columns instead of four */
+        gap: 2rem;
+    }
+}
+
+@media (max-width: 600px) {
+    .footer-content {
+        grid-template-columns: 1fr; /* fully stacked */
+        text-align: center;
+    }
+}
+
+/* Reduce hero spacing in "desktop mode on mobile" */
+@media (max-width: 1024px) {
+  .hero {
+    min-height: auto;   /* don’t force giant height */
+    padding-top: 4rem;  /* smaller padding */
+    padding-bottom: 2rem;
+  }
+
+  .hero-container {
+    grid-template-columns: 1fr; /* stack content */
+    gap: 2rem;
+    text-align: center;
+    padding: 0 1.5rem;
+  }
+
+  .hero-content {
+    margin-bottom: 2rem;
+  }
+
+  .hero-graphic {
+    width: 220px;
+    height: 220px;
+    margin: 0 auto;
+  }
+}
+
+
         
 
         /* Scroll animations */
@@ -1742,15 +1806,12 @@
 }
 
 .testimonials-title {
-    font-family: 'Inter', sans-serif;
-    font-size: clamp(2rem, 5vw, 2.8rem);
+    font-size: clamp(2rem, 4vw, 2.8rem);
     font-weight: 700;
-    /* background: linear-gradient(135deg, #ffffff 0%, var(--secondary) 50%, var(--primary) 100%); */
     background: white;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    background-clip: text;
-    margin-bottom: 1rem;
+    margin-bottom: 0.8rem;
     letter-spacing: -0.02em;
 }
 
