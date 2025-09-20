@@ -7,6 +7,9 @@
   <meta name="description" content="Transform your brand with cutting-edge digital solutions. We craft websites, campaigns, and experiences that make your audience stop scrolling and start engaging.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="/assets/images/favicon.png">
+
   <link rel="stylesheet" href="assets/css/style.css">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
@@ -14,17 +17,29 @@
   <div class="bg-animation"></div>
 
  <style>
-    /* Page fade-in */
-    body { opacity: 0; transition: opacity 0.5s ease; }
-    body.loaded { opacity: 1; }
+    body { 
+        visibility: hidden; 
+        opacity: 0; 
+        transition: opacity 0.5s ease; 
+    }
+    body.loaded { 
+        visibility: visible; 
+        opacity: 1; 
+    }
 
     /* Fade-in elements */
-    .fade-in { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease, transform 0.6s ease; }
-    .fade-in.visible { opacity: 1; transform: translateY(0); }
+    .fade-in { 
+        opacity: 0; 
+        transform: translateY(20px); 
+        transition: opacity 0.6s ease, transform 0.6s ease; 
+    }
+    .fade-in.visible { 
+        opacity: 1; 
+        transform: translateY(0); 
+    }
 
     /* Header base */
     #header {
-      
         position: fixed;
         top: 0;
         left: 0;
@@ -33,17 +48,14 @@
         background: rgba(10, 10, 10, 0.8);
         backdrop-filter: var(--blur);
         border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-        z-index: 9999; /* very high to be above everything */
+        z-index: 9999;
         transition: all 0.3s ease;
-        pointer-events: auto; /* ensure clicks pass through */
-
+        pointer-events: auto;
     }
-    
     #header.visible { opacity: 1; }
     #header.scrolled { 
-      /* background: rgba(10, 10, 10, 0.8);
-      box-shadow: 0 2px 6px rgba(0,0,0,0.1); */
-    backdrop-filter: var(--blur);
+        background: rgba(10, 10, 10, 0.8);
+        box-shadow: 0 2px 6px rgba(0,0,0,0.1);
     }
   </style>
 </head>
@@ -490,6 +502,17 @@
       document.body.style.opacity = "0";
       document.body.style.transition = "opacity 0.3s ease";
       requestAnimationFrame(() => { document.body.style.opacity = "1"; });
+
+      window.addEventListener('load', function() {
+        document.body.classList.add('loaded');
+        
+        // Remove preloader if you added one
+        const preloader = document.querySelector('.preloader');
+        if (preloader) {
+            preloader.classList.add('fade-out');
+            setTimeout(() => preloader.remove(), 500);
+        }
+    });
 
 
 </script>

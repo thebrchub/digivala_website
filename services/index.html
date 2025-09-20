@@ -5,6 +5,7 @@
   <title>Our Services | Digivala</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="/assets/css/style.css">
+  <link rel="icon" type="image/png" href="/assets/images/favicon.png">
   <script src="/assets/js/script.js"></script>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
@@ -40,6 +41,10 @@
       background: rgba(10, 10, 10, 0.8);
       box-shadow: 0 2px 6px rgba(0,0,0,0.1);
     }
+      /* Critical CSS - prevents flash */
+    body { opacity: 0; transition: opacity 0.3s ease; }
+    .loaded { opacity: 1 !important; }
+    
   </style>
 </head>
 <body>
