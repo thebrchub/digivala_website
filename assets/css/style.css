@@ -1560,6 +1560,113 @@
             box-shadow: 0 8px 25px rgba(6, 255, 165, 0.3);
         }
 
+        /* .multi-select {
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+        } */
+
+.custom-multiselect {
+  position: relative;
+  width: 100%;
+  font-size: 14px;
+  color: #fff;
+}
+
+.select-box {
+  background: #111;
+  border: 1px solid #333;
+  border-radius: 8px;
+  padding: 12px 15px;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: all 0.25s ease;
+}
+
+.select-box:hover {
+  border-color: #f97316;
+}
+
+.arrow {
+  border: solid #f97316;
+  border-width: 0 2px 2px 0;
+  display: inline-block;
+  padding: 4px;
+  transform: rotate(45deg);
+  margin-left: 10px;
+  transition: transform 0.3s ease;
+}
+
+.options-container {
+  display: none;
+  position: absolute;
+  top: 110%;
+  left: 0;
+  width: 100%;
+  background: #111;
+  border: 1px solid #333;
+  border-radius: 8px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.5);
+  max-height: 250px;
+  overflow-y: auto;
+  z-index: 10;
+}
+
+/* Hide the default checkbox */
+.options-container input[type="checkbox"] {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  width: 18px;
+  height: 18px;
+  border: 2px solid #f97316;
+  border-radius: 50%; /* ✅ Makes it round */
+  display: inline-block;
+  position: relative;
+  cursor: pointer;
+  margin-right: 10px;
+  background: transparent;
+  transition: all 0.2s ease;
+}
+
+/* Checked state */
+.options-container input[type="checkbox"]:checked {
+  background: #f97316;
+  border-color: #f97316;
+}
+
+/* Checkmark (custom tick inside circle) */
+.options-container input[type="checkbox"]:checked::after {
+  content: "✔";
+  position: absolute;
+  color: #fff;
+  font-size: 12px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+
+.options-container label {
+  display: block;
+  padding: 10px 15px;
+  cursor: pointer;
+  transition: background 0.2s ease;
+  text-align: left;     
+}
+
+.options-container label:hover {
+  background: #222;
+}
+
+.options-container input {
+  margin-right: 8px;
+}
+
+
+
 
         /* Footer */
         .footer {

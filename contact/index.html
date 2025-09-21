@@ -70,38 +70,103 @@
         <h2>Let’s Build <span class="highlight">Something Great Together</span></h2>
         <p>Got an idea, project, or collab in mind? Drop us a line — we’d love to hear from you.</p>
         
-        <form class="contact-form">
-          <input 
-            type="text" 
-            class="input-field" 
-            placeholder="Your Name" 
-            required
-          >
+<form class="contact-form" id="contactForm">
+  <input 
+    type="text" 
+    class="input-field" 
+    name="name"
+    placeholder="Your Name" 
+    required
+  >
 
-          <input 
-            type="email" 
-            class="input-field" 
-            placeholder="Your Email" 
-            required
-          >
+  <input 
+    type="email" 
+    class="input-field" 
+    name="email"
+    placeholder="Your Email" 
+    required
+  >
 
-          <input 
-            type="tel" 
-            class="input-field" 
-            placeholder="Your Phone Number" 
-            pattern="[0-9]{10}" 
-            required
-          >
+  <input 
+    type="tel" 
+    class="input-field" 
+    name="mobile"
+    placeholder="Your Phone Number" 
+    pattern="[0-9]{10}" 
+    required
+  >
 
-          <textarea 
-            class="input-field" 
-            placeholder="Your Message" 
-            rows="5" 
-            required
-          ></textarea>
+  <!-- 🔥 Service Dropdown -->
+ <div class="custom-multiselect">
+  <div class="select-box" id="serviceSelectBox">
+    <span id="selectedServices">Select Services</span>
+    <i class="arrow"></i>
+  </div>
+  <div class="options-container" id="servicesOptions">
+    <label><input type="checkbox" value="Digital Marketing"> Digital Marketing</label>
+    <label><input type="checkbox" value="Social Media Management"> Social Media Management</label>
+    <label><input type="checkbox" value="META Ads"> META Ads</label>
+    <label><input type="checkbox" value="Google Ads"> Google Ads</label>
+    <label><input type="checkbox" value="Web Development"> Web Development</label>
+    <label><input type="checkbox" value="Logo Creation"> Logo Creation</label>
+    <label><input type="checkbox" value="Advertising"> Advertising</label>
+    <label><input type="checkbox" value="SMS Marketing"> SMS Marketing</label>
+    <label><input type="checkbox" value="Email Marketing"> Email Marketing</label>
+  </div>
+</div>
 
-          <button type="submit" class="submit-btn">Send Message</button>
-        </form>
+  <textarea 
+    class="input-field" 
+    name="message"
+    placeholder="Your Message" 
+    rows="5" 
+    required
+  ></textarea>
+
+  <button type="submit" class="submit-btn">Send Message</button>
+</form>
+
+
+
+
+<script>
+document.getElementById("contactForm").addEventListener("submit", async function(e) {
+  e.preventDefault(); // stop normal form submission
+
+  const form = e.target;
+  const data = {
+    name: form.name.value,
+    email: form.email.value,
+    message: form.message.value,
+    mobile: form.mobile.value,
+    brand: "digivaala" // static brand value
+  };
+
+  try {
+    const response = await fetch("https://mail-porter.vercel.app/api/email/send-email/gmail", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "accept": "application/json",
+        "x-api-key": "SuperSecretApiKey123!@#"
+      },
+      body: JSON.stringify(data)
+    });
+
+    if (response.ok) {
+      alert("✅ Message sent successfully!");
+      form.reset();
+    } else {
+      const err = await response.json();
+      alert("❌ Failed to send: " + (err.message || response.statusText));
+    }
+  } catch (error) {
+    console.error(error);
+    alert("⚠️ Something went wrong. Please try again later.");
+  }
+});
+</script>
+
 
         </div>
     </div>
@@ -211,16 +276,29 @@
     });
   }
 
-  window.addEventListener('load', function() {
-        document.body.classList.add('loaded');
-        
-        // Remove preloader if you added one
-        const preloader = document.querySelector('.preloader');
-        if (preloader) {
-            preloader.classList.add('fade-out');
-            setTimeout(() => preloader.remove(), 500);
-        }
+    const selectBox = document.getElementById("serviceSelectBox");
+    const optionsContainer = document.getElementById("servicesOptions");
+    const selectedServices = document.getElementById("selectedServices");
+
+    selectBox.addEventListener("click", () => {
+      optionsContainer.style.display =
+        optionsContainer.style.display === "block" ? "none" : "block";
     });
+
+    document.querySelectorAll("#servicesOptions input").forEach(checkbox => {
+      checkbox.addEventListener("change", () => {
+        const checked = Array.from(document.querySelectorAll("#servicesOptions input:checked"))
+          .map(cb => cb.value);
+        selectedServices.textContent = checked.length > 0 ? checked.join(", ") : "Select Services";
+      });
+    });
+
+    document.addEventListener("click", (e) => {
+      if (!selectBox.contains(e.target) && !optionsContainer.contains(e.target)) {
+        optionsContainer.style.display = "none";
+      }
+    });
+
 
 </script>
 
