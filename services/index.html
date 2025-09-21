@@ -129,7 +129,7 @@
             <div class="services-cta fade-in">
             <h3 class="cta-heading">Your Growth.<span class="highlight"> Our Playbook.</span></h3>
             <p class="cta-subtext">From ads to design, we’ve got the moves to keep your brand winning.</p>
-            <a href="contact.html" class="cta-button">Let’s Talk </a>
+            <a href="/contact/" class="cta-button">Let’s Talk </a>
             </div>
         </div>
     </section>
@@ -139,11 +139,50 @@
      <div id="footer"></div>
   
 <script>
+  // ✅ Modal functions must exist globally before footer loads
+  window.openModal = function(modalId) {
+    console.log("Opening modal:", modalId);
+    const modal = document.getElementById(modalId);
+    if (modal) {
+      modal.style.display = "block";
+      modal.classList.add("show");
+      document.body.style.overflow = "hidden";
+    } else {
+      console.error("Modal not found:", modalId);
+    }
+  };
+
+  window.closeModal = function(modalId) {
+    console.log("Closing modal:", modalId);
+    const modal = document.getElementById(modalId);
+    if (modal) {
+      modal.style.display = "none";
+      modal.classList.remove("show");
+      document.body.style.overflow = "auto";
+    }
+  };
+
+  // Close modal when clicking outside
+  window.addEventListener("click", function(e) {
+    if (e.target.classList.contains("modal")) {
+      closeModal(e.target.id);
+    }
+  });
+
+  // Close modal with Escape key
+  document.addEventListener("keydown", function(e) {
+    if (e.key === "Escape") {
+      document.querySelectorAll(".modal.show").forEach(modal => {
+        closeModal(modal.id);
+      });
+    }
+  });
+
   document.addEventListener("DOMContentLoaded", () => {
     document.body.classList.add("loaded"); // page fade-in
 
     const headerEl = document.getElementById("header");
-    const overlay = document.querySelector(".overlay"); // select overlay
+    const overlay = document.querySelector(".overlay");
 
     // --- Header injection ---
     fetch("/partials/header.html")
@@ -151,8 +190,6 @@
       .then(html => {
         headerEl.innerHTML = html;
         headerEl.classList.add("visible");
-
-        // Re-init header behavior after injection
         initHeader(headerEl, overlay);
       })
       .catch(err => console.warn("Header failed:", err));
@@ -160,13 +197,16 @@
     // --- Footer injection ---
     fetch("/partials/footer.html")
       .then(res => res.text())
-      .then(html => document.getElementById("footer").innerHTML = html)
+      .then(html => {
+        document.getElementById("footer").innerHTML = html;
+        console.log("Footer loaded - modal functions should work now");
+      })
       .catch(err => console.warn("Footer failed:", err));
 
     // --- Fade-in page elements ---
     const observer = new IntersectionObserver(entries => {
       entries.forEach((entry, i) => {
-        if(entry.isIntersecting){
+        if (entry.isIntersecting) {
           setTimeout(() => entry.target.classList.add("visible"), i * 150);
         }
       });
@@ -174,15 +214,14 @@
     document.querySelectorAll(".fade-in").forEach(el => observer.observe(el));
   });
 
-  // ✅ Header logic, runs only after it's injected
+  // ✅ Header logic
   function initHeader(headerEl, overlay) {
-    // Smooth scroll
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
       anchor.addEventListener("click", e => {
         const href = anchor.getAttribute("href");
-        if(href && href !== "#"){
+        if (href && href !== "#") {
           const target = document.querySelector(href);
-          if(target){
+          if (target) {
             e.preventDefault();
             const headerHeight = headerEl.offsetHeight || 0;
             window.scrollTo({ top: target.offsetTop - headerHeight, behavior: "smooth" });
@@ -191,31 +230,28 @@
       });
     });
 
-    // Hamburger nav
     const hamburger = headerEl.querySelector(".hamburger");
     const navMenu = headerEl.querySelector(".nav-menu");
     const navLinks = headerEl.querySelectorAll(".nav-link");
 
-    if(hamburger && navMenu){
+    if (hamburger && navMenu) {
       const toggleMenu = () => {
         hamburger.classList.toggle("active");
         navMenu.classList.toggle("active");
-        if(overlay) overlay.classList.toggle("active"); // toggle overlay
+        if (overlay) overlay.classList.toggle("active");
       };
 
       hamburger.addEventListener("click", toggleMenu);
 
-      // Close menu when a nav link is clicked
       navLinks.forEach(link => {
         link.addEventListener("click", () => {
           hamburger.classList.remove("active");
           navMenu.classList.remove("active");
-          if(overlay) overlay.classList.remove("active");
+          if (overlay) overlay.classList.remove("active");
         });
       });
 
-      // Close menu when overlay is clicked
-      if(overlay){
+      if (overlay) {
         overlay.addEventListener("click", () => {
           hamburger.classList.remove("active");
           navMenu.classList.remove("active");
@@ -224,21 +260,22 @@
       }
     }
 
-    // Sticky header
     let lastScrollTop = 0;
     window.addEventListener("scroll", () => {
       const current = window.pageYOffset || document.documentElement.scrollTop;
       headerEl.classList.toggle("scrolled", current > 100);
 
-      if(current > lastScrollTop && current > 200){
-        headerEl.style.top = "-100px"; // hide on scroll down
+      if (current > lastScrollTop && current > 200) {
+        headerEl.style.top = "-100px";
       } else {
-        headerEl.style.top = "0"; // show on scroll up
+        headerEl.style.top = "0";
       }
       lastScrollTop = current;
     });
   }
 </script>
+
+
 
 
 </body>

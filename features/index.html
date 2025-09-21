@@ -2,16 +2,14 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Feature</title>
+  <title>Features</title>
   <link rel="stylesheet" href="/assets/css/style.css">
   <script src="/assets/js/script.js"></script>
   <link rel="icon" type="image/png" href="/assets/images/favicon.png">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-</head>
-<body>
 
- <style>
+  <style>
     /* Page fade-in */
     body { opacity: 0; transition: opacity 0.5s ease; }
     body.loaded { opacity: 1; }
@@ -22,7 +20,6 @@
 
     /* Header base */
     #header {
-      
         position: fixed;
         top: 0;
         left: 0;
@@ -31,10 +28,9 @@
         background: rgba(10, 10, 10, 0.8);
         backdrop-filter: var(--blur);
         border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-        z-index: 9999; /* very high to be above everything */
+        z-index: 9999;
         transition: all 0.3s ease;
-        pointer-events: auto; /* ensure clicks pass through */
-
+        pointer-events: auto;
     }
     #header.visible { opacity: 1; }
     #header.scrolled { 
@@ -42,7 +38,7 @@
       box-shadow: 0 2px 6px rgba(0,0,0,0.1);
     }
 
-      /* Critical CSS - prevents flash */
+    /* Critical CSS - prevents flash */
     body { opacity: 0; transition: opacity 0.3s ease; }
     .loaded { opacity: 1 !important; }
   </style>
@@ -52,7 +48,7 @@
   <!-- Header placeholder -->
   <div id="header"></div>
   
-    <div class="overlay"></div>
+  <div class="overlay"></div>
 
   <!-- Features Section -->
   <section class="features" id="features">
@@ -96,10 +92,54 @@
     </div>
   </section>
 
-         <!-- Footer placeholder -->
+  <!-- Footer placeholder -->
   <div id="footer"></div>
 
 <script>
+  // ✅ DEFINE MODAL FUNCTIONS FIRST - BEFORE ANYTHING ELSE
+  window.openModal = function(modalId) {
+    console.log("Opening modal:", modalId);
+    const modal = document.getElementById(modalId);
+    if (modal) {
+        modal.style.display = "block";
+        modal.classList.add("show");
+        document.body.style.overflow = "hidden";
+        console.log("Modal opened successfully");
+    } else {
+        console.error("Modal not found:", modalId);
+    }
+  };
+
+  window.closeModal = function(modalId) {
+    console.log("Closing modal:", modalId);
+    const modal = document.getElementById(modalId);
+    if (modal) {
+        modal.style.display = "none";
+        modal.classList.remove("show");
+        document.body.style.overflow = "auto";
+        console.log("Modal closed successfully");
+    }
+  };
+
+  // Close modal when clicking outside
+  window.addEventListener("click", function(e) {
+    if (e.target.classList.contains("modal")) {
+        const modalId = e.target.id;
+        if (modalId) {
+            closeModal(modalId);
+        }
+    }
+  });
+
+  // Close modal with Escape key
+  document.addEventListener("keydown", function(e) {
+    if (e.key === "Escape") {
+        document.querySelectorAll(".modal.show").forEach(function(modal) {
+            closeModal(modal.id);
+        });
+    }
+  });
+
   document.addEventListener("DOMContentLoaded", () => {
     document.body.classList.add("loaded"); // page fade-in
 
@@ -121,7 +161,10 @@
     // --- Footer injection ---
     fetch("/partials/footer.html")
       .then(res => res.text())
-      .then(html => document.getElementById("footer").innerHTML = html)
+      .then(html => {
+        document.getElementById("footer").innerHTML = html;
+        console.log("Footer loaded - modal functions should work now");
+      })
       .catch(err => console.warn("Footer failed:", err));
 
     // --- Fade-in page elements ---
@@ -210,9 +253,7 @@
             setTimeout(() => preloader.remove(), 500);
         }
     });
-    
 </script>
-
 
 </body>
 </html>

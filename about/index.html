@@ -10,6 +10,28 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
   <style>
+    :root {
+            --primary: #6366f1;
+            --primary-dark: #4f46e5;
+            --secondary: #06ffa5;
+            --secondary_new: #00d5ff;
+            --secondary_hero: linear-gradient(135deg, #00729b 0%, #8b5cf6 100%);
+            --accent: #ff6b6b;
+            --dark: #0a0a0a;
+            --dark-card: #111111;
+            --dark-lighter: #1a1a1a;
+            --text-primary: #ffffff;
+            --text-secondary: #a1a1aa;
+            --text-muted: #71717a;
+            --gradient-primary: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+            --gradient-secondary: linear-gradient(135deg, #ff065d 0%, #008cff 100%);
+            --gradient-tertiary: linear-gradient(135deg, #ff8306 0%, #ff0073 100%);
+            --gradient-socials: linear-gradient(135deg, #ff830695 0%, #ff007383 100%);
+            --gradient-accent: linear-gradient(135deg, #ff6b6b 0%, #ffd93d 100%);
+            --blur: blur(20px);
+            --button: linear-gradient(135deg, #129af4 0%, #30166e 100%);
+            --button_send: linear-gradient(145deg, #f49d12 0%, #30166e 100%);
+        }
     #header {
         position: fixed;
         top: 0;
@@ -51,18 +73,83 @@
         opacity: 1; 
         transform: translateY(0); 
     }
+
+    /* Custom styles for subheadings */
+    .section-subheading {
+        background: var(--gradient-accent);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        font-weight: 900;
+        margin-bottom: 1rem;
+        font-size: 1.8rem;
+    }
+
+    .about-tagline {
+        text-align: center;
+        margin-top: 3rem;
+        /* padding: 2rem; */
+        /* background: rgba(6, 255, 165, 0.05); */
+        /* border: 1px solid rgba(6, 255, 165, 0.2); */
+        /* border-radius: 16px; */
+        position: relative;
+        overflow: hidden;
+        font-weight: 600;
+    }
+
+   
+
+    .about-tagline::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        /* background: linear-gradient(135deg, rgba(6, 255, 165, 0.1), rgba(99, 102, 241, 0.05)); */
+        opacity: 0.5;
+        z-index: -1;
+    }
+    
+
+    .about-tagline p {
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin: 0;
+      color: #ffffff; /* plain white text */
+      line-height: 1.3;
+    }
+
+    .about-tagline .highlight {
+      color: #38bdf8; /* bright blue highlight */
+    }
+    
+
+    .about-philosophy {
+        text-align: center;
+        font-style: italic;
+        font-size: 1.1rem;
+        color: var(--text-secondary);
+        margin: 2rem 0;
+        /* padding: 1.5rem; */
+        /* border-left: 3px solid var(--secondary); */
+        /* background: rgba(255, 255, 255, 0.02); */
+        /* border-radius: 0 12px 12px 0; */
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+        .about-tagline p {
+            font-size: 1.4rem;
+        }
+    }
   </style>
 </head>
 <body> 
-  <!-- <--style="visibility: hidden;" onload="this.style.visibility='visible';"> --> 
-
   <!-- Header placeholder -->
-  <!-- Header placeholder -->
-<header id="header" data-header></header>
-
+  <header id="header" data-header></header>
 
   <div class="overlay"></div>
-
 
   <section class="about fade-in" id="about">
   <div class="floating-element elem-1"></div>
@@ -70,22 +157,38 @@
   <div class="container">
     <div class="about-content">
       <h2 class="about-title">About <span class="highlight">Digivala</span></h2>
-      <p>
-        At <strong>Digivala</strong>, we're more than just a digital agency —
-        we're your growth partner.
-      </p>
-      <p>
-        From building a brand's foundation to running high-impact ad campaigns,
-        we blend <em><strong>innovation, design, and analytics</strong></em> to
-        make sure your brand stands out.
-      </p>
+      
+      <div class="about-intro" style="margin-bottom: 3rem;">
+        <p style="font-size: 1.25rem; font-weight: 500; margin-bottom: 1.5rem;">
+          Welcome to <strong>DIGIVALA</strong>, your trusted partner in the digital world.
+        </p>
+      </div>
+
+      <div class="about-services" style="margin-bottom: 2.5rem;">
+        <h3 class="section-subheading">What We Do</h3>
+        <p>
+          We specialize in <strong>Digital Marketing, Social Media Management, and Ad Campaign Set-up</strong> designed to help businesses grow faster and smarter.
+        </p>
+      </div>
+
+      <div class="about-mission" style="margin-bottom: 3rem;">
+        <h3 class="section-subheading">Our Mission</h3>
+        <p>
+          As a brand powered by <strong>Legalvala</strong>, we bring professionalism, trust, and industry expertise to every project we handle. Our team focuses on creating tailored strategies that build your online presence, connect you with the right audience, and deliver measurable results.
+        </p>
+      </div>
+
+      <div class="about-philosophy">
+        <p>
+          At <strong>DIGIVALA</strong>, we believe every brand has a story worth sharing – and we make sure yours reaches the right people, at the right time.
+        </p>
+      </div>
 
       <!-- About Grid -->
       <div class="about-grid">
         <div class="about-card fade-in">
           <div class="about-media">
             <video src="/assets/videos/10.mp4" autoplay loop muted playsinline></video>
-            <!-- OR <img src="assets/images/about1.jpg" alt="Expertise"> -->
           </div>
           <h3>Expertise</h3>
           <p>A multidisciplinary team with proven expertise</p>
@@ -123,23 +226,67 @@
             <video src="/assets/videos/14.mp4" autoplay loop muted playsinline></video>
           </div>
           <h3>Future-Ready</h3>
-          <p>Future-ready solutions for tomorrow’s challenges</p>
+          <p>Future-ready solutions for tomorrow's challenges</p>
         </div>
       </div>
 
-      <p class="about-footer">
-        We believe every brand has a story worth telling. <br />
-        <strong>At Digivala, we make sure that story is heard.</strong>
-      </p>
+      <div class="about-tagline">
+        <p>
+          DIGIVALA – Driving Digital Growth, <span class="highlight">Powered by Legalvala</span>.
+        </p>
+      </div>
     </div>
   </div>
 </section>
 
-
   <!-- Footer placeholder -->
- 
- <div id="footer"></div>
+  <div id="footer"></div>
+
 <script>
+  // ✅ DEFINE MODAL FUNCTIONS FIRST - BEFORE ANYTHING ELSE
+  window.openModal = function(modalId) {
+    console.log("Opening modal:", modalId);
+    const modal = document.getElementById(modalId);
+    if (modal) {
+        modal.style.display = "block";
+        modal.classList.add("show");
+        document.body.style.overflow = "hidden";
+        console.log("Modal opened successfully");
+    } else {
+        console.error("Modal not found:", modalId);
+    }
+  };
+
+  window.closeModal = function(modalId) {
+    console.log("Closing modal:", modalId);
+    const modal = document.getElementById(modalId);
+    if (modal) {
+        modal.style.display = "none";
+        modal.classList.remove("show");
+        document.body.style.overflow = "auto";
+        console.log("Modal closed successfully");
+    }
+  };
+
+  // Close modal when clicking outside
+  window.addEventListener("click", function(e) {
+    if (e.target.classList.contains("modal")) {
+        const modalId = e.target.id;
+        if (modalId) {
+            closeModal(modalId);
+        }
+    }
+  });
+
+  // Close modal with Escape key
+  document.addEventListener("keydown", function(e) {
+    if (e.key === "Escape") {
+        document.querySelectorAll(".modal.show").forEach(function(modal) {
+            closeModal(modal.id);
+        });
+    }
+  });
+
   document.addEventListener("DOMContentLoaded", () => {
     document.body.classList.add("loaded"); // page fade-in
 
@@ -161,7 +308,10 @@
     // --- Footer injection ---
     fetch("/partials/footer.html")
       .then(res => res.text())
-      .then(html => document.getElementById("footer").innerHTML = html)
+      .then(html => {
+        document.getElementById("footer").innerHTML = html;
+        console.log("Footer loaded - modal functions should work now");
+      })
       .catch(err => console.warn("Footer failed:", err));
 
     // --- Fade-in page elements ---
@@ -252,7 +402,6 @@
     });
 
 </script>
-
 
 </body>
 </html>
