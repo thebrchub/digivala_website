@@ -1,0 +1,25 @@
+# ===== ENABLE REWRITE =====
+RewriteEngine On
+RewriteBase /
+
+# Force trailing slash for directories (helps JS fetch)
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_URI} !/$
+RewriteRule ^(.*)$ /$1/ [L,R=301]
+
+# If requested file or folder doesn't exist, fallback to index.html
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^.*$ /index.html [L]
+
+# ===== DISABLE CACHING (ensures latest JS/CSS load) =====
+<IfModule mod_expires.c>
+  ExpiresActive Off
+</IfModule>
+
+# ===== SECURITY TWEAKS =====
+Options -Indexes
+<FilesMatch "\.(env|htaccess|json|config)$">
+  Order Allow,Deny
+  Deny from all
+</FilesMatch>
