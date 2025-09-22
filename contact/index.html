@@ -180,12 +180,15 @@
 
     const form = e.target;
     const data = {
-      name: form.name.value,
-      email: form.email.value,
-      message: form.message.value,
-      mobile: form.mobile.value,
-      brand: "digivaala" // static brand value
-    };
+    name: form.name.value,
+    email: form.email.value,
+    message: form.message.value,
+    mobile: form.mobile.value,
+    brand: "digivaala", // static brand value
+    services: Array.from(document.querySelectorAll("#servicesOptions input:checked"))
+      .map(cb => cb.value) // grab all checked service values
+  };
+
 
     try {
       const response = await fetch("https://mail-porter.vercel.app/api/email/send-email/gmail", {
