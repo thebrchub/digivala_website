@@ -485,38 +485,79 @@
 }
 
 .face-inner {
-    width: 100%;
-    height: 100%;
-    border: 2px solid rgba(255, 255, 255, 0.2);
-    box-shadow: 
-        0 15px 35px rgba(0, 0, 0, 0.3),
-        inset 0 2px 0 rgba(255, 255, 255, 0.15),
-        inset 0 -2px 0 rgba(0, 0, 0, 0.1);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.6rem;
-    font-weight: 700;
-    color: white;
-    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
-    transition: all 0.3s ease;
-    backdrop-filter: blur(5px);
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 
+      0 15px 35px rgba(0, 0, 0, 0.3),
+      inset 0 2px 0 rgba(255, 255, 255, 0.15),
+      inset 0 -2px 0 rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: white;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
+  overflow: hidden; /* keep video clipped inside */
+  border-radius: 5px;
+  backdrop-filter: blur(5px);
+  background-color: #7c7979; /* fallback solid layer */
+  
 }
 
-.face-inner:hover {
-    transform: scale(0.95);
-    box-shadow: 
-        0 8px 20px rgba(0, 0, 0, 0.4),
-        inset 0 2px 0 rgba(255, 255, 255, 0.3);
+.face-img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  /* margin-bottom: 10px; */
 }
 
-/* Face Gradients */
-.front .face-inner  { background: linear-gradient(135deg, #6366f1, #8b5cf6); }
-.back .face-inner   { background: linear-gradient(135deg, #06ffa4, #10b981); }
-.right .face-inner  { background: linear-gradient(135deg, #f59e0b, #f97316); }
-.left .face-inner   { background: linear-gradient(135deg, #ef4444, #ec4899); }
-.top .face-inner    { background: linear-gradient(135deg, #3b82f6, #06b6d4); }
-.bottom .face-inner { background: linear-gradient(135deg, #8b5cf6, #a855f7); }
+
+.face-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 10; /* adjust for readability */
+  z-index: 1;
+}
+
+/* keep gradient overlay above video but behind text */
+.face-inner::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  opacity: 0.7;
+  border-radius: 5px;
+}
+
+.face-inner::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 5px;
+  background: rgba(180, 180, 180, 0.3); /* fake blur mask */
+  z-index: 1;
+}
+
+/* text always on top */
+.face-inner span {
+  position: relative;
+  z-index: 3;
+}
+
+/* Gradients */
+/* .front .face-inner::before  { background: linear-gradient(135deg, #6366f1, #8b5cf6); } */
+.back .face-inner::before   { background: linear-gradient(135deg, #06ffa4, #10b981); }
+.right .face-inner::before  { background: linear-gradient(135deg, #f59e0b, #f97316); }
+.left .face-inner::before   { background: linear-gradient(135deg, #ef4444, #ec4899); }
+.top .face-inner::before    { background: linear-gradient(135deg, #3b82f6, #06b6d4); }
+.bottom .face-inner::before { background: linear-gradient(135deg, #8b5cf6, #a855f7); }
 
 /* Face Positions */
 .front  { transform: rotateY(0deg) translateZ(125px); }
