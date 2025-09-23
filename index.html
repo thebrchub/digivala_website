@@ -84,9 +84,21 @@
           </a>
         </div>
       </div>
-      <div class="hero-visual">
+      <!-- <div class="hero-visual">
         <div class="hero-graphic"></div>
-      </div>
+      </div> -->
+
+      <div class="hero-visual">
+      <div class="hero-dice">
+            <div class="face front"><div class="face-inner">SEO</div></div>
+            <div class="face back"><div class="face-inner">Branding</div></div>
+            <div class="face right"><div class="face-inner">Ads</div></div>
+            <div class="face left"><div class="face-inner">Content</div></div>
+            <div class="face top"><div class="face-inner">Design</div></div>
+            <div class="face bottom"><div class="face-inner">Strategy</div></div>
+        </div>
+
+    </div>
     </div>
   </section>
 
@@ -544,6 +556,14 @@
         setTimeout(() => preloader.remove(), 500);
     }
   });
+
+  document.querySelector('.hero-dice').addEventListener('mouseenter', function() {
+            this.style.animationPlayState = 'paused';
+        });
+
+        document.querySelector('.hero-dice').addEventListener('mouseleave', function() {
+            this.style.animationPlayState = 'running';
+        });
 </script>
 
 </body>
